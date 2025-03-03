@@ -124,9 +124,9 @@ function Dashboarduppermenu() {
                   <option value="Noor">Noor</option>
                   <option value="Asai">Asai</option>
                   <option value="Pache">Pache</option>
-                  <option value="Bridel Edit">Bridel Edit</option>
-                  <option value="Polki Edit">Polki Edit</option>
-                  <option value="Make a wish">Make a wish</option>
+                  <option value="BridelEdit">Bridel Edit</option>
+                  <option value="PolkiEdit">Polki Edit</option>
+                  <option value="MakeAWish">Make a wish</option>
                 </select>
               </div>
             </div>

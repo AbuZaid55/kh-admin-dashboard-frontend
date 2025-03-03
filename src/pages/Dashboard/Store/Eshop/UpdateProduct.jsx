@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Input from "../../../../compoenets/main/Input"
 import Button from "../../../../compoenets/main/Button"
-import {useNavigate, useSearchParams} from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 const productFields = {
     name: "",
@@ -41,7 +41,7 @@ const productFields = {
     extra_fee: "",
 
     gst_percent: "",
-    isItRing:false,
+    isItRing: false,
 
     height: "",
     weight: "",
@@ -220,23 +220,23 @@ export default function UpdateProduct() {
         }
     };
 
-    const getProduct = async()=>{
-      if(!productId) return;
-      try {
-        const res = await api.get(`/store/eshop/products/get-product-for-update/${productId}`)
-        const data = res.data 
-        data.images1 = []
-        data.images2 = []
-        data.images3 = []
-        setProduct(data)
-      } catch (error) {
-        console.log(error)
-      }
+    const getProduct = async () => {
+        if (!productId) return;
+        try {
+            const res = await api.get(`/store/eshop/products/get-product-for-update/${productId}`)
+            const data = res.data
+            data.images1 = []
+            data.images2 = []
+            data.images3 = []
+            setProduct(data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleSave = async (e) => {
         e.preventDefault();
-        if(!productId) return;
+        if (!productId) return;
         const formData = new FormData();
 
         // Append images correctly
@@ -258,7 +258,7 @@ export default function UpdateProduct() {
             setDiamondAddingErrorMessage('')
             e.target.reset();
             navigate(-1)
-          } catch (error) {
+        } catch (error) {
             toast.error(error.response?.data?.error || "Error submitting product.");
         }
     };
@@ -274,30 +274,21 @@ export default function UpdateProduct() {
         getCateogries()
     }, []);
     useEffect(() => {
-        getCateogries();
-        setProduct((prevProduct) => ({
-            ...prevProduct,
-            category: "",
-            style: "",
-        }));
-        setCategories([]);
         setStyles([]);
+        getCateogries();
+        setCategories([]);
     }, [product.collection]);
     useEffect(() => {
-        getStyles();
-        setProduct((prevProduct) => ({
-            ...prevProduct,
-            style: "",
-        }));
         setStyles([]);
+        getStyles();
     }, [product.category]);
-    useEffect(()=>{
-      if(productId){
-        getProduct()
-      }else{
-        navigate("/")
-      }
-    },[productId])
+    useEffect(() => {
+        if (productId) {
+            getProduct()
+        } else {
+            navigate("/")
+        }
+    }, [productId])
 
     return (
         <div className=" p-4 bg-white shadow-lg rounded-xl">
@@ -342,72 +333,72 @@ export default function UpdateProduct() {
                     </div>
 
                     <div className="w-full">
-                    <label>Select Category</label>
-                    <select name="category" value={product.category || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
-                        <option value="">Select Category</option>
-                        {categories.map((category) => (
-                            <option key={category._id} value={category._id}>
-                                {category.name}
-                            </option>
-                        ))}
-                    </select>
+                        <label>Select Category</label>
+                        <select name="category" value={product.category || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
+                            <option value="">Select Category</option>
+                            {categories.map((category) => (
+                                <option key={category._id} value={category._id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="w-full">
-                    <label>Select Style</label>
-                    <select name="style" value={product.style || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
-                        <option value="">Select Style</option>
-                        {styles.map((style) => (
-                            <option key={style._id} value={style._id}>
-                                {style.name}
-                            </option>
-                        ))}
-                    </select>
+                        <label>Select Style</label>
+                        <select name="style" value={product.style || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
+                            <option value="">Select Style</option>
+                            {styles.map((style) => (
+                                <option key={style._id} value={style._id}>
+                                    {style.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
                 <div className={`flex gap-4 justify-between mt-6`}>
                     <div className="w-full">
-                    <label>Select Color & Images</label>
-                    <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
-                        <select name="color1" value={product.color1 || ''} onChange={handleChange} className="mt-2 block text-gray-500 w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
-                            <option value="">Select Color 1</option>
-                            {colors.map((color) => (
-                                <option key={color._id} value={color._id}>
-                                    {color.name}
-                                </option>
-                            ))}
-                        </select>
-                        <Input type="file" multiple name="images1" onChange={handleImageUpload} />
+                        <label>Select Color & Images</label>
+                        <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
+                            <select name="color1" value={product.color1 || ''} onChange={handleChange} className="mt-2 block text-gray-500 w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
+                                <option value="">Select Color 1</option>
+                                {colors.map((color) => (
+                                    <option key={color._id} value={color._id}>
+                                        {color.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <Input type="file" multiple name="images1" onChange={handleImageUpload} />
+                        </div>
                     </div>
-                    </div>
-                   <div className="w-full">
-                   <label>Select Color & Images</label>
-                   <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
-                        <select name="color2" value={product.color2 || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
-                            <option value="">Select Color 2</option>
-                            {colors.map((color) => (
-                                <option key={color._id} value={color._id}>
-                                    {color.name}
-                                </option>
-                            ))}
-                        </select>
-                        <Input type="file" multiple name="images2" onChange={handleImageUpload} />
-                    </div>
-                   </div>
                     <div className="w-full">
-                    <label>Select Color & Images</label>
-                    <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
-                        <select name="color3" value={product.color3 || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
-                            <option value="">Select Color 3</option>
-                            {colors.map((color) => (
-                                <option key={color._id} value={color._id}>
-                                    {color.name}
-                                </option>
-                            ))}
-                        </select>
-                        <Input type="file" multiple name="images3" onChange={handleImageUpload} />
+                        <label>Select Color & Images</label>
+                        <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
+                            <select name="color2" value={product.color2 || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
+                                <option value="">Select Color 2</option>
+                                {colors.map((color) => (
+                                    <option key={color._id} value={color._id}>
+                                        {color.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <Input type="file" multiple name="images2" onChange={handleImageUpload} />
+                        </div>
                     </div>
+                    <div className="w-full">
+                        <label>Select Color & Images</label>
+                        <div className="w-full flex flex-col border p-2 my-2 border-gray-300 shadow-sm rounded-md gap-2">
+                            <select name="color3" value={product.color3 || ''} onChange={handleChange} className="mt-2 text-gray-500 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm  ">
+                                <option value="">Select Color 3</option>
+                                {colors.map((color) => (
+                                    <option key={color._id} value={color._id}>
+                                        {color.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <Input type="file" multiple name="images3" onChange={handleImageUpload} />
+                        </div>
                     </div>
                 </div>
 
@@ -431,16 +422,17 @@ export default function UpdateProduct() {
                 <div className="border border-gray-300 shadow-sm p-4 rounded-md mt-6">
                     <h1 className="text-lg">Diamonds Details:</h1>
                     <div>
-                        {product.diamonds.map((diamond, index) => (
-                            <div className="border border-gray-300 shadow-sm p-4 my-2 rounded-md" key={diamond.diamond}>
+                        {product.diamonds.map((diamond, index) => {
+                            const data = diamonds.find((obj)=>obj._id===diamond.diamond)
+                            return <div className="border border-gray-300 shadow-sm p-4 my-2 rounded-md" key={diamond.diamond}>
                                 <div className="flex gap-4 items-center justify-between">
                                     <h1 className="font-semibold">
-                                        {diamond.grade} - {diamond.variant}
+                                        {data?.grade} - {data?.variant}
                                     </h1>
                                     <div className="flex items-center gap-4">
                                         <h4 className="text-sm font-medium text-nowrap">Same Pcs:</h4>
                                         <Input
-                                           
+
                                             type="number"
                                             placeholder="Enter same pcs"
                                             value={diamond.same_pcs}
@@ -457,7 +449,7 @@ export default function UpdateProduct() {
                                 {diamond.pcs.map((pcs, i) => (
                                     <div className="flex w-full" key={i}>
                                         <div className="grid grid-cols-2 gap-4 my-2 w-full" key={i}>
-                                            <Input  type="number" placeholder="Enter Count" value={pcs.count} onChange={(e) => handlePcsChange(index, i, "count", e.target.value)} />
+                                            <Input type="number" placeholder="Enter Count" value={pcs.count} onChange={(e) => handlePcsChange(index, i, "count", e.target.value)} />
                                             <Input type="number" placeholder="Enter Weight" value={pcs.weight} onChange={(e) => handlePcsChange(index, i, "weight", e.target.value)} />
                                         </div>
                                         {i !== 0 && (
@@ -469,11 +461,11 @@ export default function UpdateProduct() {
                                 ))}
 
                                 <div className="flex items-center justify-between">
-                                    <Button text="Add PCS" type="button" className='bg-[#333333] hover:bg-transparent border-[#333333] px-4 hover:text-[#333333] mt-2' onClick={() => addPcsEntry(index)}/>
-                                    <Button text="Remvoe" onClick={() => { remvoeDiamond(index) }} className='bg-red-700 hover:bg-transparent border-red-700 px-4 hover:text-red-700 mt-2'/>
+                                    <Button text="Add PCS" type="button" className='bg-[#333333] hover:bg-transparent border-[#333333] px-4 hover:text-[#333333] mt-2' onClick={() => addPcsEntry(index)} />
+                                    <Button text="Remvoe" onClick={() => { remvoeDiamond(index) }} className='bg-red-700 hover:bg-transparent border-red-700 px-4 hover:text-red-700 mt-2' />
                                 </div>
                             </div>
-                        ))}
+                        })}
                     </div>
 
                     <span className="text-red-500">{diamnodAddingErrorMessage}</span>
@@ -502,7 +494,7 @@ export default function UpdateProduct() {
 
                         <Input type="number" name="gemstone_price" value={product.gemstone_price || ''} onChange={handleChange} placeholder="Gemstone Price" />
 
-                        <Input type="number" name="gemstone_weight" value={product.gemstone_weight || ''} onChange={handleChange} placeholder="Gemstone Weight"  />
+                        <Input type="number" name="gemstone_weight" value={product.gemstone_weight || ''} onChange={handleChange} placeholder="Gemstone Weight" />
 
                         <Input type="text" name="gemstone_type" value={product.gemstone_type} onChange={handleChange} placeholder="Gemstone Type" />
                     </div>
@@ -511,56 +503,56 @@ export default function UpdateProduct() {
                 <div className="flex gap-2 justify-between mt-6">
                     <div className="w-full">
                         <label>Select Labor Type</label>
-                    <select name="labor" value={product.labor} onChange={handleChange} className="mt-2 block w-full text-gray-500 px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm">
-                        <option value="">Select Labor Type</option>
-                        {labors.map((labor) => (
-                            <option key={labor._id} value={labor._id}>
-                                {labor.type}
-                            </option>
-                        ))}
-                    </select>
-                    </div>
-                </div>
-
-                <div className="flex gap-2 justify-between mt-6"> 
-                   <div className="w-full">
-                    <label>Extra Cost</label>
-                   <Input type="number" name="extra_cost" value={product.extra_cost || ''} onChange={handleChange} placeholder="Extra Cost"  />
-                   </div>
-
-                   <div className="w-full">
-                   <label>Extra Fee</label>
-                   <Input type="number" name="extra_fee" value={product.extra_fee || ''} onChange={handleChange} placeholder="Extra Fee" />
-                   </div>
-
-                    <div className="w-full">
-                    <label>GST %</label>
-                    <Input type="number" name="gst_percent" value={product.gst_percent || ''} onChange={handleChange} placeholder="GST %"/>
+                        <select name="labor" value={product.labor} onChange={handleChange} className="mt-2 block w-full text-gray-500 px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm">
+                            <option value="">Select Labor Type</option>
+                            {labors.map((labor) => (
+                                <option key={labor._id} value={labor._id}>
+                                    {labor.type}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
                 <div className="flex gap-2 justify-between mt-6">
-                   <div className="w-full">
-                   <label>Pearl Cost</label>
-                   <Input type="number" name="pearl_cost" value={product.pearl_cost || ''} onChange={handleChange} placeholder="Pearl Cost"/>
-                   </div>
-
-                   <div className="w-full">
-                   <label>Height</label>
-                   <Input type="text" name="height" value={product.height || ''} onChange={handleChange} placeholder="Height"  />
-                   </div>
+                    <div className="w-full">
+                        <label>Extra Cost</label>
+                        <Input type="number" name="extra_cost" value={product.extra_cost || ''} onChange={handleChange} placeholder="Extra Cost" />
+                    </div>
 
                     <div className="w-full">
-                    <label>Weight</label>
-                    <Input type="text" name="weight" value={product.weight || ''} onChange={handleChange} placeholder="Weight" />
+                        <label>Extra Fee</label>
+                        <Input type="number" name="extra_fee" value={product.extra_fee || ''} onChange={handleChange} placeholder="Extra Fee" />
+                    </div>
+
+                    <div className="w-full">
+                        <label>GST %</label>
+                        <Input type="number" name="gst_percent" value={product.gst_percent || ''} onChange={handleChange} placeholder="GST %" />
                     </div>
                 </div>
 
-                <textarea name="description" value={product.description} onChange={handleChange} placeholder="Description"  className="mt-6 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm " rows="3"></textarea>
+                <div className="flex gap-2 justify-between mt-6">
+                    <div className="w-full">
+                        <label>Pearl Cost</label>
+                        <Input type="number" name="pearl_cost" value={product.pearl_cost || ''} onChange={handleChange} placeholder="Pearl Cost" />
+                    </div>
+
+                    <div className="w-full">
+                        <label>Height</label>
+                        <Input type="text" name="height" value={product.height || ''} onChange={handleChange} placeholder="Height" />
+                    </div>
+
+                    <div className="w-full">
+                        <label>Weight</label>
+                        <Input type="text" name="weight" value={product.weight || ''} onChange={handleChange} placeholder="Weight" />
+                    </div>
+                </div>
+
+                <textarea name="description" value={product.description} onChange={handleChange} placeholder="Description" className="mt-6 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm " rows="3"></textarea>
 
                 <div className="flex gap-2 border border-gray-300 shadow-sm px-4 py-2 rounded-md my-6">
                     <label className="block font-medium">IsItRing?:</label>
-                    <Input className=" cursor-pointer"  value={product.isItRing} type="checkbox" name="isItRing"  onChange={(e)=>{setProduct({...product,isItRing:e.target.value})}} /> 
+                    <Input className=" cursor-pointer" value={product.isItRing} type="checkbox" name="isItRing" onChange={(e) => { setProduct({ ...product, isItRing: e.target.value }) }} />
                 </div>
 
                 <div className="flex gap-2 border border-gray-300 shadow-sm px-4 py-2 rounded-md my-6">

@@ -149,10 +149,7 @@ function Dashboardsidemenu() {
                             <div >
                                 <Link to="/dashboard">
                                     <button
-                                        onClick={() => {
-                                            setactive("dashboard"),
-                                                setClose(false)
-                                        }}
+                                        onClick={() => {setactive("dashboard")}}
                                         className={`${active == "dashboard" ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer`}>
                                         <span className=' text-[24px]'><CgProfile /></span>
                                         {close && <span
@@ -165,9 +162,7 @@ function Dashboardsidemenu() {
                                 <Link to="dashprofile">
                                     <button
                                         onClick={() => {
-                                            setactive("dashprofile"),
-                                                setClose(false)
-                                        }}
+                                            setactive("dashprofile")}}
                                         className={`${active == "dashprofile" ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer`}>
                                         <span className=' text-[24px]'><RxDashboard /></span>
                                         {close && <span
@@ -178,10 +173,7 @@ function Dashboardsidemenu() {
                             </div>
                             <div>
                                 <div
-                                    onClick={() => {
-                                        setactive("store_manegement")
-                                        setClose(true)
-                                    }}
+                                    onClick={() => { setactive("store_manegement");setClose(true)}}
                                     className={`${active == "store_manegement" ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer`}>
                                     <span className=' text-[24px]'><IoStorefrontSharp /></span>
                                     {close && <span
@@ -207,10 +199,7 @@ function Dashboardsidemenu() {
                                 <div key={i}>
                                     <Link to={menu.href}>
                                         <button
-                                            onClick={() => {
-                                                setactive(menu.label),
-                                                    setClose(false)
-                                            }}
+                                            onClick={() => {setactive(menu.label)}}
                                             className={`${active == menu.label ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer`}>
                                             <span className=' text-[24px]'>{menu.icon}</span>
                                             {close && <span
@@ -230,10 +219,7 @@ function Dashboardsidemenu() {
                                 <div key={i}>
                                     <Link to={menu.href}>
                                         <button
-                                            onClick={() => {
-                                                setactive(menu.label),
-                                                    setClose(false)
-                                            }}
+                                            onClick={() => {setactive(menu.label)}}
                                             className={`${active == menu.label ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer`}>
                                             <span className=' text-[24px]'>{menu.icon}</span>
                                             {close && <span

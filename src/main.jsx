@@ -24,6 +24,11 @@ const Promocode = React.lazy(() => import('./pages/Dashboard/Promocode.jsx'));
 const Khwahishoutlet = React.lazy(() => import('./pages/Dashboard/Khwahish/Khwahishoutlet.jsx'));
 const KhwahishHomepage = React.lazy(() => import('./pages/Dashboard/Khwahish/KhwahishHomepage.jsx'));
 const Noor = React.lazy(() => import('./pages/Dashboard/Khwahish/Noor.jsx'));
+const Asai = React.lazy(() => import('./pages/Dashboard/Khwahish/Asai.jsx'));
+const Pache = React.lazy(() => import('./pages/Dashboard/Khwahish/Pache.jsx'));
+const BridelEdit = React.lazy(() => import('./pages/Dashboard/Khwahish/BridelEdit.jsx'));
+const PolkiEdit = React.lazy(() => import('./pages/Dashboard/Khwahish/PolkiEdit.jsx'));
+const MakeAWish = React.lazy(() => import('./pages/Dashboard/Khwahish/MakeAWish.jsx'));
 
 //store Route for Eshop
 const Eshop_Collections = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Collections.jsx'));
@@ -322,6 +327,46 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <Noor />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'asai',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Asai />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'pache',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Pache />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'brideledit',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <BridelEdit />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'polkiedit',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <PolkiEdit />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'makeawish',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <MakeAWish />
                   </Suspense>
                 ),
               },

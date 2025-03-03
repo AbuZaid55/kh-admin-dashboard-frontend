@@ -6,15 +6,14 @@ import Dashboardsidemenu from '../../compoenets/main/Dashboardsidemenu'
 function Dashboard() {
     return (
         <>
-            <div className=' flex gap-5 w-full h-[100%] relative mx-auto items-center' >
-                <div className=' fixed top-0 z-50 w-[50px]'>
-                    <div>
-                        <Dashboardsidemenu /> {/* sidebar layout menu */}
-                        
-                    </div>
+            <div className='flex' >
+                <div>
+                    <Dashboardsidemenu />
+
                 </div>
-                <div className=' flex flex-col gap-5 pb-4 pt-5 w-[100%] pl-[100px] pr-10'>
-                    <Dashboarduppermenu />  {/* Uppar layout menu */}
+
+                <div className='w-full p-4 h-screen overflow-hidden overflow-y-scroll'>
+                    <Dashboarduppermenu />
                     <Outlet />
                 </div>
 
