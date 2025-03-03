@@ -53,7 +53,7 @@ const calculateTotalPrice = (product) => {
           obj.diamond?.priceRanges.map((range) => {
             if ((pcs.weight / pcs.count) >= range.minCts && (pcs.weight / pcs.count) <= range.maxCts) {
               price = price + (((pcs.weight / pcs.count) * range.pricePerGram) * pcs.count)
-              _totalDiamondWeight += pcs.weight
+              _totalDiamondWeight = parseFloat((_totalDiamondWeight + pcs.weight).toFixed(3));
             }
           })
         })
