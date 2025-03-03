@@ -22,7 +22,7 @@ const Settings = React.lazy(() => import('./pages/Dashboard/Settings.jsx'));
 const Customer = React.lazy(() => import('./pages/Dashboard/Customer.jsx'));
 const Promocode = React.lazy(() => import('./pages/Dashboard/Promocode.jsx'));
 const Khwahishoutlet = React.lazy(() => import('./pages/Dashboard/Khwahish/Khwahishoutlet.jsx'));
-const KhwahishHomepage = React.lazy(() => import('./pages/Dashboard/Khwahish/khwahishHomepage.jsx'));
+const KhwahishHomepage = React.lazy(() => import('./pages/Dashboard/Khwahish/KhwahishHomepage.jsx'));
 const Noor = React.lazy(() => import('./pages/Dashboard/Khwahish/Noor.jsx'));
 
 //store Route for Eshop
