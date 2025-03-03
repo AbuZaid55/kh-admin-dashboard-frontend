@@ -55,6 +55,8 @@ const page = () => {
       setPricePerGram('')
       setSeletedGold('')
       setEditMode(false)
+      setMakingCharge('')
+      setWastageCharge('')
     } catch (error) {
       toast.error(error?.response?.data?.error)
     }
