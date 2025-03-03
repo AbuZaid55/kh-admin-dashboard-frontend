@@ -132,9 +132,9 @@ function Dashboardsidemenu() {
 
     return (
         <>
-            <aside className='  text-white '>
+            <aside className='  text-white h-screen '>
                 <div
-                    className={`bg-black overflow-hidden ${close ? "w-[300px]" : "w-[90px]"} transition-all  duration-300 ease-in-out px-10 pt-8 w-[100%] min-h-screen flex flex-col items-center gap-5`}>
+                    className={`bg-black overflow-hidden ${close ? "w-[300px]" : "w-[100px]"} transition-all  duration-300 ease-in-out px-10 pt-8 w-[100%] min-h-screen flex flex-col items-center gap-5 h-full overflow-y-scroll scrollbar-hide`}>
 
                     <div className=' flex flex-col justify-start items-start'>
                         <button
