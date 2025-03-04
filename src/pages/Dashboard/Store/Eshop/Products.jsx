@@ -90,7 +90,7 @@ const Inventory = () => {
     try {
       const res = await api.post("/store/eshop/products/get-products")
       const data = await res.data
-      setProductList(data)
+      setProductList(data?.products)
     } catch (error) {
       console.log(error)
     }

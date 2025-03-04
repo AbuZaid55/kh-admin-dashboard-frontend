@@ -72,7 +72,7 @@ const page = () => {
   const getProducts = async () => {
     if (!input.style) return;
     try {
-      const res = await api.post("/store/eshop/products/get-products", input);
+      const res = await api.post("/store/eshop/products/get-products-for-discount", input);
       const data = await res.data;
       setProducts(data);
     } catch (error) {
