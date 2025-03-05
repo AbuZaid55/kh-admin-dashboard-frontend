@@ -44,7 +44,7 @@ const productFields = {
     isItRing: false,
 
     height: "",
-    weight: "",
+    width: "",
 
     recommendedFor: [],
 };
@@ -543,8 +543,8 @@ export default function UpdateProduct() {
                     </div>
 
                     <div className="w-full">
-                        <label>Weight</label>
-                        <Input type="text" name="weight" value={product.weight || ''} onChange={handleChange} placeholder="Weight" />
+                        <label>Width</label>
+                        <Input type="text" name="width" value={product.width || ''} onChange={handleChange} placeholder="Width" />
                     </div>
                 </div>
 

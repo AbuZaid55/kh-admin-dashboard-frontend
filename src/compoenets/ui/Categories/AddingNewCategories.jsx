@@ -64,7 +64,7 @@ function AddingNewCategories({ edit, setedit, name, Description, img, setname, s
     return (
         <>
             <div className='shadow-md rounded-[10px] p-4'>
-                <h1 className='text-[18px]'>{edit ? "Edit" : "Add New"}Category</h1>
+                <h1 className='text-[18px]'>{edit ? "Edit" : "Add New"} Category</h1>
 
                 <form onSubmit={edit ? handleformforEdit : handleformforadd}> {/* to check form to edit or add new category */}
                     <div className=' mt-8  flex flex-col gap-5'>

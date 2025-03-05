@@ -8,7 +8,6 @@ function Categories() {
   const [name, setname] = useState('')
   const [Description, setDescription] = useState('')
   const [img, setimg] = useState()
-  const [collections, setCollections] = useState([])
   const [selectedCategory,setSelectedCategory]=useState('')
 
    const [formatedData, setFormatedData] = useState([])
@@ -34,7 +33,7 @@ function Categories() {
   return (
     <>
       <div className='flex flex-col gap-8'>
-        <AddingNewCategories name={name} getAllCateogries={getAllCateogries} collections={collections} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} Description={Description} img={img} setname={setname} setDescription={setDescription} setimg={setimg} setCollections={setCollections}  edit={edit} setedit={setedit} />
+        <AddingNewCategories name={name} getAllCateogries={getAllCateogries} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} Description={Description} img={img} setname={setname} setDescription={setDescription} setimg={setimg}  edit={edit} setedit={setedit} />
         <AddedCategories formatedData={formatedData} getAllCateogries={getAllCateogries} setname={setname}  setSelectedCategory={setSelectedCategory} setDescription={setDescription}  setedit={setedit} />
       </div>
     </>
