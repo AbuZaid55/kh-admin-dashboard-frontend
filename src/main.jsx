@@ -30,6 +30,12 @@ const BridelEdit = React.lazy(() => import('./pages/Dashboard/Khwahish/BridelEdi
 const PolkiEdit = React.lazy(() => import('./pages/Dashboard/Khwahish/PolkiEdit.jsx'));
 const MakeAWish = React.lazy(() => import('./pages/Dashboard/Khwahish/MakeAWish.jsx'));
 
+const QOHoutlet = React.lazy(() => import('./pages/Dashboard/QOH/QOHoutlet.jsx'));
+const QOHhomepage = React.lazy(() => import('./pages/Dashboard/QOH/QOHhomepage.jsx'));
+const Gulz = React.lazy(() => import('./pages/Dashboard/QOH/Gulz'));
+const Fazza = React.lazy(() => import('./pages/Dashboard/QOH/Fazza'));
+const Festara = React.lazy(() => import('./pages/Dashboard/QOH/Festara'));
+
 //store Route for Eshop
 const Eshop_Collections = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Collections.jsx'));
 const Eshop_Categories = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Categories.jsx'));
@@ -367,6 +373,50 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <MakeAWish />
+                  </Suspense>
+                ),
+              },
+            ]
+          },
+          {
+            path: 'queen',
+            element: (
+              <Suspense fallback={<Loader />}>
+                <QOHoutlet />
+              </Suspense>
+            ),
+
+            //children of queen
+            children: [
+              {
+                index: true,
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <QOHhomepage />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'gulz',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Gulz />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'fazza',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Fazza />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'festara',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Festara />
                   </Suspense>
                 ),
               },
