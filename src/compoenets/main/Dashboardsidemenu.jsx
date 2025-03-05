@@ -111,6 +111,10 @@ function Dashboardsidemenu() {
         href: "store/eshop/wastage-charges",
       },
       {
+        label: "Recommended",
+        href: "store/eshop/recommended",
+      },
+      {
         label: "Add Product",
         href: "store/eshop/add-product",
       },

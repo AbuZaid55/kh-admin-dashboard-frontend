@@ -51,6 +51,7 @@ const Eshop_Discount = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Di
 const Eshop_Colors = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Colors.jsx'));
 const Eshop_MakingCharges = React.lazy(() => import('./pages/Dashboard/Store/Eshop/MakingCharges.jsx'));
 const Eshop_WastageCharges = React.lazy(() => import('./pages/Dashboard/Store/Eshop/WastageCharges.jsx'));
+const Eshop_RecommendedFor = React.lazy(() => import('./pages/Dashboard/Store/Eshop/Recommended.jsx'));
 
 // store Route for Khwaahish
 const Khwaahish_Collections = React.lazy(() => import('./pages/Dashboard/Store/Khwaahish/Collections.jsx'));
@@ -173,6 +174,14 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <Eshop_Colors />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'recommended',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Eshop_RecommendedFor />
                   </Suspense>
                 ),
               },

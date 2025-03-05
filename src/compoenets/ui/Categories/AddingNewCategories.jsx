@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Input from './../../main/Input';
 import { FaRegFileImage } from "react-icons/fa";
 import Button from './../../main/Button';
