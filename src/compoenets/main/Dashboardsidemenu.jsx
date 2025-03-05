@@ -231,15 +231,17 @@ function Dashboardsidemenu() {
             </div>
 
             <div>
-              <div
+              <Link
+                to={menus[1].href}
                 onClick={() => {
                   setactive(menus[1].label);
                   setClose(true);
+                  setActiveCustomize("khwaahish")
                 }}
                 className={`${active == menus[1].label ? "text-[#EC9D0C]" : "text-white"}  flex gap-5 justify-start items-center p-1 hover:text-[#EC9D0C] cursor-pointer mt-2`}>
                 <span className=" text-[24px]">{menus[1].icon}</span>
                 {close && <span className="text-[16px] text-nowrap">Customization</span>}
-              </div>
+              </Link>
               <div className={`${close && active === menus[1].label ? "" : "hidden"}  flex flex-col items-end mt-2 ml-8`}>
                 <div className={`grid grid-cols-2 gap-2 justify-end bg-gray-500 rounded-md text-center  `}>
                   <Link
