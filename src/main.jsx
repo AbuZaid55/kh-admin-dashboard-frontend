@@ -62,6 +62,20 @@ const Khwaahish_Products = React.lazy(() => import('./pages/Dashboard/Store/Khwa
 const Khwaahish_UpdateProduct = React.lazy(() => import('./pages/Dashboard/Store/Khwaahish/UpdateProduct.jsx'));
 
 
+
+
+
+const ArticalLayout = React.lazy(() => import('./pages/Dashboard/Articals/ArticalLayout'));
+const PrivacyPolicy = React.lazy(() => import('./pages/Dashboard/Articals/PrivacyPolicy.jsx'));
+const Conditions = React.lazy(() => import('./pages/Dashboard/Articals/Terms&Conditions'));
+const OurStory = React.lazy(() => import('./pages/Dashboard/Articals/OurStory'));
+const Blog = React.lazy(() => import('./pages/Dashboard/Articals/Blog'));
+const SeoLayout = React.lazy(() => import('./pages/Dashboard/SEO/SeoLayout.jsx'));
+const SeoDetails = React.lazy(() => import('./pages/Dashboard/SEO/SeoDetails.jsx'));
+const DNS = React.lazy(() => import('./pages/Dashboard/SEO/DNS.jsx'));
+const Customizations = React.lazy(() => import('./pages/Dashboard/SEO/Customizations.jsx'));
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -426,6 +440,86 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <Festara />
+                  </Suspense>
+                ),
+              },
+            ]
+          },
+          {
+            path: 'artical',
+            element: (
+              <Suspense fallback={<Loader />}>
+                <ArticalLayout />
+              </Suspense>
+            ),
+
+            //Children of artical
+            children: [
+              {
+                index: true,
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <PrivacyPolicy />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'terms&conditions',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Conditions />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'ourstory',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <OurStory />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'blog',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Blog />
+                  </Suspense>
+                ),
+              },
+            ]
+          },
+          {
+            path: 'seo',
+            element: (
+              <Suspense fallback={<Loader />}>
+                <SeoLayout />
+              </Suspense>
+            ),
+
+            //Children of seo
+            children: [
+              {
+                index: true,
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <SeoDetails />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'dns',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <DNS />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'customizations',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Customizations />
                   </Suspense>
                 ),
               },

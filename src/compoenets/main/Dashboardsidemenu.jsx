@@ -6,6 +6,7 @@ import { GrValidate } from "react-icons/gr";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IoStorefrontSharp } from "react-icons/io5";
+import { IoSearchOutline } from "react-icons/io5";
 import { ImMagicWand } from "react-icons/im";
 import { GrDocumentText } from "react-icons/gr";
 import { Link } from "react-router-dom";
@@ -35,9 +36,14 @@ function Dashboardsidemenu() {
     },
     {
       icon: <GrDocumentText />,
-      label: "Article",
-      href: "",
-    },
+      label: 'Article',
+      href: 'artical'
+  },
+  {
+      icon: <IoSearchOutline />,
+      label: 'SEO',
+      href: 'seo'
+  },
     {
       icon: <IoIosInformationCircleOutline />,
       label: "Customer",
@@ -271,7 +277,7 @@ function Dashboardsidemenu() {
             {/* for 10 to 11 appearance beacuse of space between */}
 
             <div className="flex flex-col justify-start items-start pt-3 gap-3">
-              {menus.slice(2, 5).map((menu, i) => (
+              {menus.slice(2, ).map((menu, i) => (
                 <div key={i}>
                   <Link to={menu.href}>
                     <button
