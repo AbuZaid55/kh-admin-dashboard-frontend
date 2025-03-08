@@ -12,6 +12,7 @@ const KhwahishpageName = ["Noor", "Asai", "Pache", "BridelEdit", "PolkiEdit", "M
 const NoorpageName = ["Gulz", "Fazza", "Festara"]
 const Artical = ["Terms&Conditions", "OurStory", "Blog"]
 const Seo = ["DNS", "Customizations"]
+const Layout=["Footer","QuickLinks"]
 
 function Dashboarduppermenu() {
   const [filtercompshow, setfiltercompshow] = useState(false)
@@ -61,6 +62,12 @@ function Dashboarduppermenu() {
       setfiltercompshow(false);
       setbulkshow(false);
       setcurrentpageName(Seo)
+    } 
+    else if (location.pathname.startsWith('/dashboard/layout')) {
+      setedithompage(true)
+      setfiltercompshow(false);
+      setbulkshow(false);
+      setcurrentpageName(Layout)
     }
     else {
       setfiltercompshow(false);
@@ -79,6 +86,7 @@ function Dashboarduppermenu() {
     if (location.pathname.startsWith('/dashboard/queen')) navigate(`/dashboard/queen/${selectedvaluse.toLowerCase()}`)
     if (location.pathname.startsWith('/dashboard/artical')) navigate(`/dashboard/artical/${selectedvaluse.toLowerCase()}`)
     if (location.pathname.startsWith('/dashboard/seo')) navigate(`/dashboard/seo/${selectedvaluse.toLowerCase()}`)
+    if (location.pathname.startsWith('/dashboard/layout')) navigate(`/dashboard/layout/${selectedvaluse.toLowerCase()}`)
   }
 
   // handle on cking option change for home page and make option selected empty
@@ -88,6 +96,7 @@ function Dashboarduppermenu() {
     if (location.pathname.startsWith('/dashboard/queen')) navigate(`/dashboard/queen`)
     if (location.pathname.startsWith('/dashboard/artical')) navigate(`/dashboard/artical`)
     if (location.pathname.startsWith('/dashboard/seo')) navigate(`/dashboard/seo`)
+    if (location.pathname.startsWith('/dashboard/layout')) navigate(`/dashboard/layout`)
   }
 
 
@@ -101,6 +110,8 @@ function Dashboarduppermenu() {
       return "Edit Queen Homepage";
     } else if (location.pathname.startsWith('/dashboard/seo')) {
       return "SEO Details"
+    } else if (location.pathname.startsWith('/dashboard/layout')) {
+      return "Header"
     } else {
       return "Edit Homepage";
     }
@@ -153,7 +164,7 @@ function Dashboarduppermenu() {
           {/* edit homepage  and edit collection list*/}
           {edithompage &&
             <div className=' flex gap-8 items-center'>
-              <button className={` px-3 py-2 shadow-md rounded-lg border-4 cursor-pointer  ${location.pathname === '/dashboard/Khwahish' || location.pathname === "/dashboard/queen" || location.pathname === "/dashboard/artical" || location.pathname === "/dashboard/seo" ? 'border-amber-200' : 'border-transparent'}`}
+              <button className={` px-3 py-2 shadow-md rounded-lg border-4 cursor-pointer  ${location.pathname === '/dashboard/Khwahish' || location.pathname === "/dashboard/queen" || location.pathname === "/dashboard/artical" || location.pathname === "/dashboard/seo" || location.pathname === "/dashboard/layout" ? 'border-amber-200' : 'border-transparent'}`}
                 onClick={handeloptionhomepageclick}
               >
                 {renderButtonText()}

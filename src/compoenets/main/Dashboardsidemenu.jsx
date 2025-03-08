@@ -9,6 +9,7 @@ import { IoStorefrontSharp } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { ImMagicWand } from "react-icons/im";
 import { GrDocumentText } from "react-icons/gr";
+import { TbLayoutDistributeHorizontalFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 function Dashboardsidemenu() {
@@ -44,6 +45,11 @@ function Dashboardsidemenu() {
       label: 'SEO',
       href: 'seo'
   },
+  {
+    icon: <TbLayoutDistributeHorizontalFilled />,
+    label: 'Layout',
+    href: 'layout'
+},
     {
       icon: <IoIosInformationCircleOutline />,
       label: "Customer",

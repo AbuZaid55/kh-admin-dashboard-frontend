@@ -62,9 +62,6 @@ const Khwaahish_Products = React.lazy(() => import('./pages/Dashboard/Store/Khwa
 const Khwaahish_UpdateProduct = React.lazy(() => import('./pages/Dashboard/Store/Khwaahish/UpdateProduct.jsx'));
 
 
-
-
-
 const ArticalLayout = React.lazy(() => import('./pages/Dashboard/Articals/ArticalLayout'));
 const PrivacyPolicy = React.lazy(() => import('./pages/Dashboard/Articals/PrivacyPolicy.jsx'));
 const Conditions = React.lazy(() => import('./pages/Dashboard/Articals/Terms&Conditions'));
@@ -74,6 +71,11 @@ const SeoLayout = React.lazy(() => import('./pages/Dashboard/SEO/SeoLayout.jsx')
 const SeoDetails = React.lazy(() => import('./pages/Dashboard/SEO/SeoDetails.jsx'));
 const DNS = React.lazy(() => import('./pages/Dashboard/SEO/DNS.jsx'));
 const Customizations = React.lazy(() => import('./pages/Dashboard/SEO/Customizations.jsx'));
+
+import Layoutlayout from './pages/Layout/Layoutlayout';
+import Header from './pages/Layout/Header';
+import Footer from './pages/Layout/Footer';
+import QuickLinks from './pages/Layout/QuickLinks';
 
 
 const router = createBrowserRouter([
@@ -520,6 +522,42 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <Customizations />
+                  </Suspense>
+                ),
+              },
+            ]
+          },
+          {
+            path: 'layout',
+            element: (
+              <Suspense fallback={<Loader />}>
+                <Layoutlayout />
+              </Suspense>
+            ),
+
+            //Children of layout
+            children: [
+              {
+                index: true,
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Header />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'footer',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <Footer />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'quicklinks',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <QuickLinks />
                   </Suspense>
                 ),
               },
