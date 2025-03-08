@@ -15,6 +15,9 @@ function Collections() {
   const [image, setimg] = useState()
   const [nav_image, setNavImage] = useState()
   const [showInNav, setShowInNav] = useState(false)
+  const [showInCollection, setShowInCollection] = useState(false)
+  const [hasHomePage, setHasHomePage] = useState(false)
+  const [pathOfHomePage, setPathOfHomePage] = useState('')
   const [collections, setCollections] = useState([])
   const [isEditMode, setIsEditMode] = useState(false)
   const [selectedCollection, setSelectedCollection] = useState('')
@@ -28,6 +31,9 @@ function Collections() {
     setShowInNav(false)
     setNavImage('')
     setIsEditMode(false)
+    setShowInCollection(false)
+    setHasHomePage(false)
+    setPathOfHomePage('')
   }
 
   const handleEdit = (collection) => {
@@ -37,6 +43,9 @@ function Collections() {
     settagline(collection.tagline)
     setSelectedCollection(collection._id)
     setShowInNav(collection.showInNav)
+    setShowInCollection(collection.showInCollection)
+    setHasHomePage(collection.hasHomePage)
+    setPathOfHomePage(collection.pathOfHomePage)
   }
 
   const getCollections = async () => {
@@ -59,16 +68,13 @@ function Collections() {
       formdata.append("description", description)
       formdata.append("nav_image", nav_image)
       formdata.append("showInNav", showInNav)
+      formdata.append("showInCollection", showInCollection)
+      formdata.append("hasHomePage", hasHomePage)
+      formdata.append("pathOfHomePage", pathOfHomePage)
       const res = await api.put(`/store/khw/collections/update-collection/${selectedCollection}`, formdata)
       const data = await res.data
       toast.success(data.message)
-      setname('')
-      setDescription('')
-      settagline('')
-      setimg(null)
-      setShowInNav(false)
-      setNavImage('')
-      setIsEditMode(false)
+      resetForm()
       getCollections()
     } catch (error) {
       toast.error(error?.response?.data?.error)
@@ -102,12 +108,7 @@ function Collections() {
       const res = await api.post("/store/khw/collections/add-collection", formdata)
       const data = await res.data
       toast.success(data.message)
-      setname('')
-      setDescription('')
-      settagline('')
-      setimg(null)
-      setShowInNav(false)
-      setNavImage('')
+      resetForm()
       getCollections()
     } catch (error) {
       toast.error(error?.response?.data?.error)
@@ -188,8 +189,19 @@ function Collections() {
               </div>
             </div>
 
+            <div className='flex gap-8'>
             <div>
                 <label className=' cursor-pointer' htmlFor='showInNav'>Show In Nav?: <input id='showInNav' className='ml-1 w-4 h-4 cursor-pointer' type='checkbox' checked={showInNav} onChange={(e) => setShowInNav(e.target.checked)} /></label>
+              </div>
+              <div>
+                <label className=' cursor-pointer' htmlFor='showInCollection'>Show In Collection?: <input id='showInCollection' className='ml-1 w-4 h-4 cursor-pointer' type='checkbox' checked={showInCollection} onChange={(e) => setShowInCollection(e.target.checked)} /></label>
+              </div>
+              <div>
+                <label className=' cursor-pointer' htmlFor='hasHomePage'>Has Homge Page?: <input id='hasHomePage' className='ml-1 w-4 h-4 cursor-pointer' type='checkbox' checked={hasHomePage} onChange={(e) => setHasHomePage(e.target.checked)} /></label>
+              </div>
+            </div>
+              <div className={hasHomePage?"":"hidden"}>
+                  <Input type='name' placeholder='Enter Home Page Path like: /noor, /aasai' value={pathOfHomePage} onChange={(e) => setPathOfHomePage(e.target.value)} />
               </div>
 
             <div className=' flex justify-start gap-[50px] '>
