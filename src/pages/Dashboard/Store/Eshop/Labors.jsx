@@ -105,7 +105,7 @@ const page = () => {
             {laborList.map((item, index) => (
               <tr key={index} className="border-t hover:bg-gray-100">
                 <td className="px-4 py-2 border">{item.type}</td>
-                <td className="px-4 py-2 border">{item.price}</td>
+                <td className="px-4 py-2 border">₹{item.price}</td>
                 <td className="px-4 py-2 border">
                   <button
                     className="bg-[#EC9D0C] text-white px-3 py-1 rounded-md mr-2 cursor-pointer"

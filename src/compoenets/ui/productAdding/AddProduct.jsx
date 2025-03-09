@@ -108,7 +108,7 @@ export default function AddProduct() {
     }
   };
 
-  const remvoeDiamond = (index) => {
+  const RemoveDiamond = (index) => {
     setProduct((prev) => {
       let updatedDiamonds = [...prev.diamonds];
       updatedDiamonds = updatedDiamonds.filter((_, i) => i !== index);
@@ -446,9 +446,9 @@ export default function AddProduct() {
                 <div className="flex items-center justify-between">
                   <Button text="Add PCS" type="button" className="bg-[#333333] hover:bg-transparent border-[#333333] px-4 hover:text-[#333333] mt-2" onClick={() => addPcsEntry(index)} />
                   <Button
-                    text="Remvoe"
+                    text="Remove"
                     onClick={() => {
-                      remvoeDiamond(index);
+                      RemoveDiamond(index);
                     }}
                     className="bg-red-700 hover:bg-transparent border-red-700 px-4 hover:text-red-700 mt-2"
                   />

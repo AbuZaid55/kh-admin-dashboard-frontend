@@ -105,6 +105,8 @@ const calculateTotalPrice = (product) => {
 
 const Inventory = () => {
   const [productList, setProductList] = useState([]);
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   const getProduct = async () => {
     try {
@@ -127,21 +129,57 @@ const Inventory = () => {
       toast.error(error?.response?.data?.error);
     }
   };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    console.log("File Selected:", selectedFile.name);
+  };
+
+  const handleFileUpload = async () => {
+    if (!file) {
+      toast.error("Please select a file!");
+      return;
+    }
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const response = await api.post("/store/eshop/products/bulk-upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success(response.data.message);
+      getProduct();
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   useEffect(() => {
     getProduct();
   }, []);
   return (
     <div className="p-6 relative">
-      <div className=" px-3 py-2  shadow-md rounded-lg w-fit absolute -top-11">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input type="file" className=" hidden w-full h-full" accept="image/*" />
-          <p>Bulk upload </p>
-          <span>
-            <BsCloudUpload />
-          </span>
-        </label>
+      <div>
+        <div className="flex items-center justify-between gap-4 px-3 py-2  shadow-md rounded-lg w-fit absolute -top-11">
+          <label className="text-nowrap flex items-center justify-center gap-2 cursor-pointer" htmlFor="bulk_upload">
+            <input className="hidden" id="bulk_upload" type="file" onChange={handleFileChange} />
+            {uploading ? "Uploading..." : "Select File"}
+            <span>
+              <BsCloudUpload />
+            </span>
+          </label>
+          <button className={`${uploading?"":"cursor-pointer"} border px-4 rounded-md hover:bg-gray-100`} disabled={uploading} onClick={handleFileUpload}>
+            Bulk upload
+          </button>
+        </div>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
             <tr className=" text-gray-600 uppercase text-sm leading-normal ">
