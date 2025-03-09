@@ -619,11 +619,12 @@ export const CategorySection = ({ data, setData, onToggle }) => {
   );
 };
 
+// updated
 export const TopicsSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
     topic_section_title: data.topic_section_title || '',
   });
-
+   
   const [topics, setTopics] = useState(data.topics || []);
   const [newTopic, setNewTopic] = useState({
     topicTitle: '',
@@ -663,14 +664,16 @@ export const TopicsSection = ({ data, setData, onToggle }) => {
         formDataObj.append('topicImages', file);
       });
 
-      const response = await axios.post(`${BASE_URL}/topics`, formDataObj, {
+      const response = await axios.post(`${BASE_URL}/topic`, formDataObj, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
 
       if (response.data.success) {
-        setTopics([...topics, response.data.data]);
+        const updatedTopics = [...topics, response.data.data];
+        setTopics(updatedTopics);
+        setData(prevData => ({ ...prevData, topics: updatedTopics }));
         setNewTopic({
           topicTitle: '',
           topicDesc: '',
@@ -684,12 +687,40 @@ export const TopicsSection = ({ data, setData, onToggle }) => {
     }
   };
 
-  const handleDeleteTopic = async (id) => {
+  const handleSave = async () => {
     try {
-      const response = await axios.delete(`${BASE_URL}/topics/${id}`);
+
+      const Obj = {
+        collection_homepage_name: data.collection_homepage_name,
+        topic_section_title: formData.topic_section_title
+      };
+      
+      const response = await axios.put(`${BASE_URL}/topic`, Obj, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
       if (response.data.success) {
-        setTopics(topics.filter(topic => topic._id !== id));
+        setFormData(response.data.data)
+        toast.success('Topic Updated successfully');
+      }
+    } catch (err) {
+      toast.error('Failed to add topic');
+      console.error(err);
+    }
+  };
+
+  const handleDeleteTopic = async (id) => {
+    try {
+      const response = await axios.delete(`${BASE_URL}/topic`, {
+        params: { id,collection_homepage_name:data.collection_homepage_name },
+      });
+        const updatedTopics = topics.filter(topic => topic._id !== id);
+        setTopics(updatedTopics);
+        setData(prevData => ({ ...prevData, topics: updatedTopics }));
+      if (response.data.success) {
+        setTopics(response.data.data.topics);
         toast.success('Topic deleted successfully');
       }
     } catch (err) {
@@ -704,7 +735,7 @@ export const TopicsSection = ({ data, setData, onToggle }) => {
       sectionKey="topic_section"
       enabled={data.topic_section}
       onToggle={() => onToggle("topic_section", !data.topic_section)}
-      onSave={handleAddTopic}
+      onSave={handleSave}
       onReset={() => setNewTopic({ topicTitle: '', topicDesc: '', topicImages: [] })}
     >
       <div className="space-y-4">

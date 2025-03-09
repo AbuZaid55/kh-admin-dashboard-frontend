@@ -44,7 +44,6 @@ const CollectionHomepageKHManager = () => {
 
   const handleToggleSection = async (sectionKey, value) => {
     try {
-        console.log(selectedCollection);
         
       const response = await axios.put(`${BASE_URL}/toggle-section`, {
         collection_homepage_name: selectedCollection,
