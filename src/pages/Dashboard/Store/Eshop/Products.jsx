@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BsCloudUpload } from "react-icons/bs";
 
+const VITE_API_QOH_URL = import.meta.env.VITE_API_QOH_URL || "http://localhost:3002"
+
 const calculateTotalPrice = (product) => {
   const prices = [];
 
@@ -198,16 +200,17 @@ const Inventory = () => {
                   <td className="py-3 px-6 flex items-center">
                     <img src={product.images1[0]?.url} alt={product.name} width={50} height={50} className="rounded" />
                     <div className="ml-3">
-                      <p className="font-semibold">{product.name}</p>
+                      <Link to={`${VITE_API_QOH_URL}/product/${product.name.replaceAll(" ","-")}`}><p className="font-semibold hover:border-b">{product.name}</p></Link>
                       <p className="text-gray-500 text-xs">
                         {product.total_gold_weight}gm gold {data && data[0]?.totalDiamondWeight} carat
                       </p>
-                      <p className="text-gray-500 text-xs">
-                        {data && data[0]?.carat} gold {data && data[0]?.grade} grade
-                      </p>
                     </div>
                   </td>
-                  <td className="py-3 px-6 text-nowrap">{data ? "₹ " + data[0]?.finalTotalPrice : "Null"}</td>
+                  <td className="py-3 px-6 text-nowrap">{
+                    data.map((obj,i)=>{
+                      return <div key={i} className="flex gap-4 text-lg"><span>Carat: {obj.carat}</span> <span>Grade: {obj.grade}</span> <span>Price: ₹{obj.finalTotalPrice}</span></div>
+                    })
+                    }</td>
                   <td className="py-3 px-6">{product.gst_percent ? product.gst_percent : 0} %</td>
                   <td className="py-3 px-6 text-white">
                     {product.stock == 0 ? (

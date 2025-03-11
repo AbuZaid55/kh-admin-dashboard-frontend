@@ -573,11 +573,11 @@ export default function UpdateProduct() {
           />
         </div>
 
-        <div className="flex gap-2 border border-gray-300 shadow-sm px-4 py-2 rounded-md my-6">
+        <div className="flex flex-col gap-2 border border-gray-300 shadow-sm px-4 py-2 rounded-md my-6">
           <label className="block font-medium">Recommended For:</label>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             {recommendedList.map((item) => (
-              <label key={item._id}>
+              <label className="w-[15%]" key={item._id}>
                 <Input className=" cursor-pointer" checked={product.recommendedFor?.includes(item._id)} type="checkbox" name="recommendedFor" value={item._id} onChange={handleCheckbox} /> {item.name}
               </label>
             ))}
