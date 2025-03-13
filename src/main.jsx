@@ -76,6 +76,21 @@ import Layoutlayout from './pages/Layout/Layoutlayout';
 import Header from './pages/Layout/Header';
 import Footer from './pages/Layout/Footer';
 import QuickLinks from './pages/Layout/QuickLinks';
+import KhwaahishHomepageManager from './pages/Dashboard/customization/Homepage-khw/KhwaahishHomepageManager.jsx'
+import CollectionHomepageKHManager from './pages/Dashboard/customization/Collection-Homepage-khw/CollectionHomepageKHManager.jsx'
+import MAWHomepageAdmin from './pages/Dashboard/customization/Collection-Homepage-khw/Maw_Homepage.jsx'
+import QOHHomepageManager from './pages/Dashboard/customization/Homepage-QOH/Qoh_Homepage.jsx'
+import EshopHomepageManager from './pages/Dashboard/customization/Hompage-Gulz/EshopHomepageManager.jsx'
+import QOHCollectionHomepageAdmin from './pages/Dashboard/customization/Collection-homepage-QOH/Collection_Homepage.jsx'
+import PrivacyPolicyManager from './pages/Dashboard/customization/PrivacyPolicy.jsx'
+import TermAndCondition from './pages/Dashboard/customization/TermAndCondition.jsx'
+import OurStoryManager from './pages/Dashboard/customization/OurStoryManager.jsx'
+import AdminAuthForm from './pages/Dashboard/auth/AdminAuthForm.jsx'
+import CustomeFooter from './pages/Dashboard/customization/CustomeFooter.jsx'
+
+// Updated 
+// import AdminAuthForm from './pages/Dashboard/auth/AdminAuthForm.jsx'
+// import ProtectedDashboardLayout from './pages/Dashboard/auth/ProtectedDashboardLayout.jsx'
 
 
 const router = createBrowserRouter([
@@ -87,7 +102,8 @@ const router = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<Loader />}>
-            <Login />
+          <Login />
+          {/* <AdminAuthForm /> */}
           </Suspense>
         ),
       },
@@ -112,6 +128,7 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <DashboardLayout />
+            {/* <ProtectedDashboardLayout /> */}
           </Suspense>
         ),
 
@@ -349,7 +366,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <KhwahishHomepage />
+                    {/* <KhwahishHomepage /> */}
+                    <KhwaahishHomepageManager />
                   </Suspense>
                 ),
               },
@@ -357,7 +375,8 @@ const router = createBrowserRouter([
                 path: 'noor',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Noor />
+                    {/* <Noor /> */}
+                    <CollectionHomepageKHManager selectedCollection={"Noor"} />
                   </Suspense>
                 ),
               },
@@ -365,7 +384,8 @@ const router = createBrowserRouter([
                 path: 'asai',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Asai />
+                    {/* <Asai /> */}
+                    <CollectionHomepageKHManager selectedCollection={"Aasai"} />
                   </Suspense>
                 ),
               },
@@ -373,7 +393,8 @@ const router = createBrowserRouter([
                 path: 'pache',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Pache />
+                    {/* <Pache /> */}
+                    <CollectionHomepageKHManager selectedCollection={"Pache"} />
                   </Suspense>
                 ),
               },
@@ -381,7 +402,8 @@ const router = createBrowserRouter([
                 path: 'brideledit',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <BridelEdit />
+                    {/* <BridelEdit /> */}
+                    <CollectionHomepageKHManager selectedCollection={"Bridal Edit"} />
                   </Suspense>
                 ),
               },
@@ -389,7 +411,8 @@ const router = createBrowserRouter([
                 path: 'polkiedit',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <PolkiEdit />
+                    {/* <PolkiEdit /> */}
+                    <CollectionHomepageKHManager selectedCollection={"Polki Edit"} />
                   </Suspense>
                 ),
               },
@@ -397,7 +420,8 @@ const router = createBrowserRouter([
                 path: 'makeawish',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <MakeAWish />
+                    {/* <MakeAWish /> */}
+                    <MAWHomepageAdmin />
                   </Suspense>
                 ),
               },
@@ -417,7 +441,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <QOHhomepage />
+                    {/* <QOHhomepage /> */}
+                    <QOHHomepageManager />
                   </Suspense>
                 ),
               },
@@ -425,7 +450,8 @@ const router = createBrowserRouter([
                 path: 'gulz',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Gulz />
+                    {/* <Gulz /> */}
+                    <EshopHomepageManager />
                   </Suspense>
                 ),
               },
@@ -433,7 +459,8 @@ const router = createBrowserRouter([
                 path: 'fazza',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Fazza />
+                    {/* <Fazza /> */}
+                    <QOHCollectionHomepageAdmin selectedCollection={"fazza"}/>
                   </Suspense>
                 ),
               },
@@ -441,7 +468,8 @@ const router = createBrowserRouter([
                 path: 'festara',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Festara />
+                    {/* <Festara /> */}
+                    <QOHCollectionHomepageAdmin selectedCollection={'festara'}/>
                   </Suspense>
                 ),
               },
@@ -461,7 +489,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <PrivacyPolicy />
+                    {/* <PrivacyPolicy /> */}
+                    <PrivacyPolicyManager />
                   </Suspense>
                 ),
               },
@@ -469,7 +498,8 @@ const router = createBrowserRouter([
                 path: 'terms&conditions',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Conditions />
+                    {/* <Conditions /> */}
+                    <TermAndCondition />
                   </Suspense>
                 ),
               },
@@ -477,7 +507,8 @@ const router = createBrowserRouter([
                 path: 'ourstory',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <OurStory />
+                    {/* <OurStory /> */}
+                    <OurStoryManager />
                   </Suspense>
                 ),
               },
@@ -549,7 +580,8 @@ const router = createBrowserRouter([
                 path: 'footer',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <Footer />
+                    {/* <Footer /> */}
+                    <CustomeFooter />
                   </Suspense>
                 ),
               },
