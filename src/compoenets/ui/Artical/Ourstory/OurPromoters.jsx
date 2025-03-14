@@ -101,7 +101,7 @@ function OurPromoters() {
                                 <div className=''>
                                     <label className="block mb-2">Add description</label>
                                     <textarea
-                                        className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                        className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                         rows="3"
                                         placeholder="Enter description"
                                         value={formdata.Description}

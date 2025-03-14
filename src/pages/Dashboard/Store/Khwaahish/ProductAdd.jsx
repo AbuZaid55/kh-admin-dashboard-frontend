@@ -142,7 +142,7 @@ export default function AddProduct() {
 
                 <div className="mt-6">
                     <label>YouTube Link</label>
-                    <Input type="text" name="youtube_link" value={product.youtube_link} onChange={handleChange} placeholder="Product Sku" />
+                    <Input type="text" name="youtube_link" value={product.youtube_link} onChange={handleChange} placeholder="YouTube Link" />
                 </div>
 
 

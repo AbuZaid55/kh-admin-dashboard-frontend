@@ -167,7 +167,7 @@ export default function AddProduct() {
 
                 <div className="mt-6">
                     <label>YouTube Link</label>
-                    <Input type="text" name="youtube_link" value={product.youtube_link} onChange={handleChange} placeholder="Product Sku" />
+                    <Input type="text" name="youtube_link" value={product.youtube_link} onChange={handleChange} placeholder="YouTube Link" />
                 </div>
 
 
@@ -229,11 +229,11 @@ export default function AddProduct() {
                 <div className="border border-gray-300 shadow-sm p-4 rounded-md mt-6">
                     <h1 className="text-lg">Gemstone Details:</h1>
                     <div className="flex gap-2 justify-between mt-1">
-                        <Input type="text" name="gemstone_name" value={product.gemstone_name} onChange={handleChange} placeholder="Gemstone Name" />
+                        <Input type="text" name="gemstone_name" value={product.gemstone_name || ''} onChange={handleChange} placeholder="Gemstone Name" />
 
                         <Input type="number" name="gemstone_weight" value={product.gemstone_weight || ''} onChange={handleChange} placeholder="Gemstone Weight" />
 
-                        <Input type="text" name="gemstone_type" value={product.gemstone_type} onChange={handleChange} placeholder="Gemstone Type" />
+                        <Input type="text" name="gemstone_type" value={product.gemstone_type || ''} onChange={handleChange} placeholder="Gemstone Type" />
                     </div>
                 </div>
 
@@ -241,16 +241,16 @@ export default function AddProduct() {
                 <div className="flex gap-2 justify-between mt-6">
                     <div className="w-full">
                         <label>Height</label>
-                        <Input type="text" name="height" value={product.height} onChange={handleChange} placeholder="Height" />
+                        <Input type="text" name="height" value={product.height || ''} onChange={handleChange} placeholder="Height" />
                     </div>
 
                     <div className="w-full">
                         <label>Width</label>
-                        <Input type="text" name="width" value={product.width} onChange={handleChange} placeholder="Width" />
+                        <Input type="text" name="width" value={product.width || ''} onChange={handleChange} placeholder="Width" />
                     </div>
                 </div>
 
-                <textarea name="description" value={product.description} onChange={handleChange} placeholder="Description" className="my-6 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm " rows="3"></textarea>
+                <textarea name="description" value={product.description || ''} onChange={handleChange} placeholder="Description" className="my-6 block w-full px-3 py-2 border border-gray-300 outline-[#EC9D0C] rounded-md shadow-sm " rows="3"></textarea>
 
                 <Button text="Save" type="submit" />
             </form>

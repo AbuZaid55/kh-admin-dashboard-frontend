@@ -69,7 +69,7 @@ function DesireSection() {
                             <div>
                                 <label className="block mb-2">Add description</label>
                                 <textarea
-                                    className=" p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                    className=" p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                     rows="2"
                                     placeholder="Enter description"
                                     value={formdata.description}
@@ -98,7 +98,7 @@ function DesireSection() {
                             <div className=''>
                                 <label className="block mb-2">Add description</label>
                                 <textarea
-                                    className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                    className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                     rows="3"
                                     placeholder="Enter description"
                                     value={formdata.description1}
@@ -121,7 +121,7 @@ function DesireSection() {
                             <div className=''>
                                 <label className="block mb-2">Add description</label>
                                 <textarea
-                                    className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                    className="w-[500px] p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                     rows="3"
                                     placeholder="Enter description"
                                     value={formdata.description2}
@@ -132,7 +132,7 @@ function DesireSection() {
 
                     </div>
 
-                    <div className=' flex justify-end gap-[30px] mt-6 '>
+                    <div className=' flex justify-end gap-[20px] mt-6 '>
                         <div className='w-[10%]'>
                             <Button
                                 // onClick={handleresetdata}

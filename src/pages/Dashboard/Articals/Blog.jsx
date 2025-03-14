@@ -59,12 +59,13 @@ function Blog() {
 
   return (
     <>
-      <div className="w-[100%] flex gap-[100px]">
+      <div className="w-[100%] flex gap-[70px]">
         <div className="w-[60%]">
           <Blogcomp />
         </div>
 
-        <div className="w-[35%]">
+        <div className="w-[60%]">
+          
           <BlogJewelleryCategories jewelleryData={jewelleryData} setJewelleryData={setJewelleryData} categories={categories} setCategories={setCategories} editIndex={editIndex} setEditIndex={setEditIndex} handleSave={handleSave} />
 
           <BlogJewelleryCategories jewelleryData={jewelleryData1} setJewelleryData={setJewelleryData1} categories={categories1} setCategories={setCategories1} editIndex={editIndex1} setEditIndex={setEditIndex1} handleSave={handleSavechange} />

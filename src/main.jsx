@@ -76,6 +76,8 @@ import Layoutlayout from './pages/Layout/Layoutlayout';
 import Header from './pages/Layout/Header';
 import Footer from './pages/Layout/Footer';
 import QuickLinks from './pages/Layout/QuickLinks';
+import TestemonialQOH from './pages/Dashboard/QOH/TestemonialQOH.jsx'
+import TestemonialKhwa from './pages/Dashboard/Khwahish/TestemonialKhwa.jsx'
 
 
 const router = createBrowserRouter([
@@ -401,6 +403,14 @@ const router = createBrowserRouter([
                   </Suspense>
                 ),
               },
+              {
+                path: 'testemonialkhwa',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialKhwa />
+                  </Suspense>
+                ),
+              },
             ]
           },
           {
@@ -442,6 +452,14 @@ const router = createBrowserRouter([
                 element: (
                   <Suspense fallback={<Loader />}>
                     <Festara />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'testemonialqoh',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialQOH />
                   </Suspense>
                 ),
               },

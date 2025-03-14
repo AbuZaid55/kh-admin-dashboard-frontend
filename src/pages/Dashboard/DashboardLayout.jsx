@@ -12,7 +12,7 @@ function Dashboard() {
 
                 </div>
 
-                <div className='w-full p-4 h-screen overflow-hidden overflow-y-scroll'>
+                <div id="scrollable-container" className='w-full p-4 h-screen overflow-hidden overflow-y-scroll'>
                     <Dashboarduppermenu />
                     <Outlet />
                 </div>
