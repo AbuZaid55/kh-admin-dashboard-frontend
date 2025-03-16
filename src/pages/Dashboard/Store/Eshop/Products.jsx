@@ -112,13 +112,13 @@ const Inventory = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [totalRecords, setTotalRecords] = useState(0);
-  const itemPerPage = 10;
+  const itemPerPage = 12;
 
   const loadingRef = useRef(loading);
   const hasMoreItem = useRef(productList.length < totalRecords ? true : false);
 
   const getProduct = async () => {
-    if (loading ) return;
+    if (loading) return;
     setLoading(true);
 
     try {
@@ -127,10 +127,10 @@ const Inventory = () => {
         limit: itemPerPage,
       });
       const data = res?.data;
-      setTotalRecords(data?.totalRecords)
-      if(page===1){
-        setProductList(data?.products)
-      }else{
+      setTotalRecords(data?.totalRecords);
+      if (page === 1) {
+        setProductList(data?.products);
+      } else {
         setProductList([...productList, ...data?.products]);
       }
     } catch (error) {
@@ -145,10 +145,10 @@ const Inventory = () => {
       const res = await api.delete(`/store/eshop/products/delete-product/${id}`);
       const data = await res.data;
       toast.success(data.message);
-      if(page===1){
-        getProduct()
-      }else{
-        setPage(1)
+      if (page === 1) {
+        getProduct();
+      } else {
+        setPage(1);
       }
     } catch (error) {
       toast.error(error?.response?.data?.error);
@@ -235,6 +235,7 @@ const Inventory = () => {
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
             <tr className=" text-gray-600 uppercase text-sm leading-normal ">
+              <th className="py-3 px-6 text-left">SKU</th>
               <th className="py-3 px-6 text-left">Product</th>
               <th className="py-3 px-6 text-left">Price</th>
               <th className="py-3 px-6 text-left">Tax Rate</th>
@@ -247,15 +248,18 @@ const Inventory = () => {
               const data = calculateTotalPrice(product);
               return (
                 <tr key={product._id} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="py-3 px-6 flex items-center">
-                    <img src={product.images1[0]?.url} alt={product.name} width={50} height={50} className="rounded" />
-                    <div className="ml-3">
-                      <Link to={`${VITE_API_QOH_URL}/product/${product.name.replaceAll(" ", "-")}`}>
-                        <p className="font-semibold hover:border-b">{product.name}</p>
-                      </Link>
-                      <p className="text-gray-500 text-xs">
-                        {product.total_gold_weight}gm gold {data && data[0]?.totalDiamondWeight} carat
-                      </p>
+                  <td className="py-3 px-6">{product?.sku}</td>
+                  <td className="py-3 px-6 ">
+                    <div className="flex items-center">
+                      <img src={product.images1[0]?.url} alt={product.name} width={50} height={50} className="rounded" />
+                      <div className="ml-3">
+                        <Link to={`${VITE_API_QOH_URL}/product/${product.name.replaceAll(" ", "-")}`}>
+                          <p className="font-semibold hover:border-b">{product.name}</p>
+                        </Link>
+                        <p className="text-gray-500 text-xs">
+                          {product.total_gold_weight}gm gold {data && data[0]?.totalDiamondWeight} carat
+                        </p>
+                      </div>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-nowrap">
