@@ -254,7 +254,7 @@ const Inventory = () => {
                       <img src={product.images1[0]?.url} alt={product.name} width={50} height={50} className="rounded" />
                       <div className="ml-3">
                         <Link to={`${VITE_API_QOH_URL}/product/${product.name.replaceAll(" ", "-")}`}>
-                          <p className="font-semibold hover:border-b">{product.name}</p>
+                          <p className="font-semibold hover:underline">{product.name}</p>
                         </Link>
                         <p className="text-gray-500 text-xs">
                           {product.total_gold_weight}gm gold {data && data[0]?.totalDiamondWeight} carat
