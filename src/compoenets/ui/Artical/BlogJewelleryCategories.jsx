@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { LiaCaretSquareDown, LiaCaretSquareUp } from 'react-icons/lia';
 import Input from '../../main/Input';
+import Button from '../../main/Button';
 
 function BlogJewelleryCategories({ jewelleryData, setJewelleryData, categories, setCategories, editIndex, setEditIndex, handleSave }) {
 
 
 
-    
+
     // // Load data from localStorage on component mount
     // useEffect(() => {
     //     const storedCategories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -52,7 +53,7 @@ function BlogJewelleryCategories({ jewelleryData, setJewelleryData, categories, 
     };
     return (
         <>
-            <div className='bg-white w-[100%] shadow-2xl my-4 flex flex-col rounded-lg p-4 h-max'>
+            <div className='bg-white w-[100%] shadow-md my-4 flex flex-col rounded-lg p-4 h-max'>
 
                 <h1 className="text-lg text-gray-700">Jewellery Categories</h1>
 
@@ -62,24 +63,34 @@ function BlogJewelleryCategories({ jewelleryData, setJewelleryData, categories, 
                 <div className='w-full'>
                     <div className='w-full border border-gray-300 py-4 px-4 rounded-xl my-4'>
                         <div className='flex flex-col w-full py-2 gap-4'>
-                            <div className='flex flex-col gap-2 w-full'>
-                                <div className='flex flex-col  gap-2'>
-                                    <label className='text-sm text-gray-700'>Add Category</label>
+                            <div className='flex gap-2 w-full'>
+                                <div className='flex items-center  gap-2'>
+                                    <label className='text-sm text-gray-700 text-nowrap'>Add Category</label>
                                     <Input type="text"
                                         // className='border border-gray-300 rounded-sm text-gray-700 focus:outline-none px-1 py-1 w-48' 
-                                        name='category' value={jewelleryData.category} onChange={handleChange} />
+                                        name='category' value={jewelleryData.category} placeholder='Add Category' onChange={handleChange} />
                                 </div>
-                                <div className='flex flex-col gap-2'>
-                                    <label className='text-sm text-gray-700'>Add Link</label>
+                                <div className='flex items-center gap-2'>
+                                    <label className='text-sm text-nowrap text-gray-700'>Add Link</label>
                                     <Input type="text"
                                         // className='border border-gray-300 rounded-sm text-gray-700 focus:outline-none px-1 py-1 w-48'
-                                        name='buttonLink' value={jewelleryData.buttonLink} onChange={handleChange} />
+                                        name='buttonLink' value={jewelleryData.buttonLink} placeholder='Add Link' onChange={handleChange} />
                                 </div>
                             </div>
-                            <div className='flex gap-2 justify-end mt-4 mb-2'>
-                                <button onClick={handleAddMore} className='bg-[#37D160] text-white text-md rounded-sm px-4 py-2 cursor-pointer'>Add more</button>
-                                <button onClick={handleReset} className='bg-[#333333] text-white text-md rounded-sm px-4 py-2 cursor-pointer'>Reset</button>
-                                <button onClick={handleSave} className='bg-[#EC9D0C] text-white text-md rounded-sm px-4 py-2 cursor-pointer'>Save Changes</button>
+                            <div className=' flex justify-end gap-[20px] mt-10 '>
+
+                                <div className='w-[20%]'>
+                                    <Button
+                                        type='reset'
+                                        onClick={handleReset}
+                                        className='bg-[#333333] hover:bg-transparent border-[#333333] w-full hover:text-[#333333]'
+                                        text="Reset" />
+
+                                </div>
+                                <button onClick={handleAddMore} className=' border border-dashed text-md rounded-sm px-4 py-2 cursor-pointer'>Add more</button>
+                                <div className='w-[40%]'>
+                                    <Button onClick={handleSave} text="Save Changes" type='submit' />
+                                </div>
                             </div>
                         </div>
                     </div>

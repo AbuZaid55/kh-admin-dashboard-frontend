@@ -76,6 +76,8 @@ import Layoutlayout from './pages/Layout/Layoutlayout';
 import Header from './pages/Layout/Header';
 import Footer from './pages/Layout/Footer';
 import QuickLinks from './pages/Layout/QuickLinks';
+import TestemonialQOH from './pages/Dashboard/QOH/TestemonialQOH.jsx'
+import TestemonialKhwa from './pages/Dashboard/Khwahish/TestemonialKhwa.jsx'
 import KhwaahishHomepageManager from './pages/Dashboard/customization/Homepage-khw/KhwaahishHomepageManager.jsx';
 import CollectionHomepageKHManager from './pages/Dashboard/customization/Collection-Homepage-khw/CollectionHomepageKHManager.jsx';
 import MAWHomepageAdmin from './pages/Dashboard/customization/Collection-Homepage-khw/Maw_Homepage.jsx';
@@ -422,8 +424,23 @@ const router = createBrowserRouter([
                 path: 'makeawish',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    {/* <MakeAWish /> */}
-                    <MAWHomepageAdmin />
+                    <MakeAWish />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'testemonialkhwa',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialKhwa />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'testemonialkhwa',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialKhwa />
                   </Suspense>
                 ),
               },
@@ -470,8 +487,23 @@ const router = createBrowserRouter([
                 path: 'festara',
                 element: (
                   <Suspense fallback={<Loader />}>
-                    {/* <Festara /> */}
-                    <QOHCollectionHomepageAdmin selectedCollection={'festara'}/>
+                    <Festara />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'testemonialqoh',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialQOH />
+                  </Suspense>
+                ),
+              },
+              {
+                path: 'testemonialqoh',
+                element: (
+                  <Suspense fallback={<Loader />}>
+                    <TestemonialQOH />
                   </Suspense>
                 ),
               },

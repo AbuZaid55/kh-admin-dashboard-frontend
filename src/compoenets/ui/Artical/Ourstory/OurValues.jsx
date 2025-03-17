@@ -62,7 +62,7 @@ function OurValues() {
                                 <div className=''>
                                     <label className="block mb-2">Add description</label>
                                     <textarea
-                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                         rows="3"
                                         placeholder="Enter description"
                                         value={formdata.Description1}
@@ -85,7 +85,7 @@ function OurValues() {
                                 <div className=''>
                                     <label className="block mb-2">Add description</label>
                                     <textarea
-                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                         rows="3"
                                         placeholder="Enter description"
                                         value={formdata.Description2}
@@ -111,7 +111,7 @@ function OurValues() {
                                 <div className=''>
                                     <label className="block mb-2">Add description</label>
                                     <textarea
-                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                         rows="3"
                                         placeholder="Enter description"
                                         value={formdata.Description3}
@@ -134,7 +134,7 @@ function OurValues() {
                                 <div className=''>
                                     <label className="block mb-2">Add description</label>
                                     <textarea
-                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 shadow-md focus:ring-[#EC9D0C] "
+                                        className="w-full p-2 border border-[#e7e7e7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#EC9D0C] "
                                         rows="3"
                                         placeholder="Enter description"
                                         value={formdata.Description4}
@@ -148,7 +148,7 @@ function OurValues() {
 
 
                     {/* Buttons */}
-                    <div className=' flex justify-end gap-[50px] mt-3 '>
+                    <div className=' flex justify-end gap-[20px] mt-3 '>
                         <div className='w-[10%]'>
                             <Button
                                 type='reset'
