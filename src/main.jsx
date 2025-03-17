@@ -76,17 +76,19 @@ import Layoutlayout from './pages/Layout/Layoutlayout';
 import Header from './pages/Layout/Header';
 import Footer from './pages/Layout/Footer';
 import QuickLinks from './pages/Layout/QuickLinks';
-import KhwaahishHomepageManager from './pages/Dashboard/customization/Homepage-khw/KhwaahishHomepageManager.jsx'
-import CollectionHomepageKHManager from './pages/Dashboard/customization/Collection-Homepage-khw/CollectionHomepageKHManager.jsx'
-import MAWHomepageAdmin from './pages/Dashboard/customization/Collection-Homepage-khw/Maw_Homepage.jsx'
-import QOHHomepageManager from './pages/Dashboard/customization/Homepage-QOH/Qoh_Homepage.jsx'
-import EshopHomepageManager from './pages/Dashboard/customization/Hompage-Gulz/EshopHomepageManager.jsx'
-import QOHCollectionHomepageAdmin from './pages/Dashboard/customization/Collection-homepage-QOH/Collection_Homepage.jsx'
-import PrivacyPolicyManager from './pages/Dashboard/customization/PrivacyPolicy.jsx'
-import TermAndCondition from './pages/Dashboard/customization/TermAndCondition.jsx'
-import OurStoryManager from './pages/Dashboard/customization/OurStoryManager.jsx'
-import AdminAuthForm from './pages/Dashboard/auth/AdminAuthForm.jsx'
-import CustomeFooter from './pages/Dashboard/customization/CustomeFooter.jsx'
+import KhwaahishHomepageManager from './pages/Dashboard/customization/Homepage-khw/KhwaahishHomepageManager.jsx';
+import CollectionHomepageKHManager from './pages/Dashboard/customization/Collection-Homepage-khw/CollectionHomepageKHManager.jsx';
+import MAWHomepageAdmin from './pages/Dashboard/customization/Collection-Homepage-khw/Maw_Homepage.jsx';
+import QOHHomepageManager from './pages/Dashboard/customization/Homepage-QOH/Qoh_Homepage.jsx';
+import EshopHomepageManager from './pages/Dashboard/customization/Hompage-Gulz/EshopHomepageManager.jsx';
+import QOHCollectionHomepageAdmin from './pages/Dashboard/customization/Collection-homepage-QOH/Collection_Homepage.jsx';
+import PrivacyPolicyManager from './pages/Dashboard/customization/PrivacyPolicy.jsx';
+import TermAndCondition from './pages/Dashboard/customization/TermAndCondition.jsx';
+import OurStoryManager from './pages/Dashboard/customization/OurStoryManager.jsx';
+import AdminAuthForm from './pages/Dashboard/auth/AdminAuthForm.jsx';
+import CustomeFooter from './pages/Dashboard/customization/CustomeFooter.jsx';
+import SEOManagement from './pages/Dashboard/customization/SEOManagement.jsx';
+
 
 // Updated 
 // import AdminAuthForm from './pages/Dashboard/auth/AdminAuthForm.jsx'
@@ -536,7 +538,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                   <Suspense fallback={<Loader />}>
-                    <SeoDetails />
+                    {/* <SeoDetails /> */}
+                     <SEOManagement />
                   </Suspense>
                 ),
               },
