@@ -570,8 +570,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                   <Suspense fallback={<Loader />}>
-                    {/* <SeoDetails /> */}
-                     <SEOManagement />
+                    <SeoDetails />
+                     {/* <SEOManagement /> */}
                   </Suspense>
                 ),
               },
