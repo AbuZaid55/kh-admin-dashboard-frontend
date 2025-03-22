@@ -202,10 +202,10 @@ const OurDesire = ({ data, setData, onToggle }) => {
                   />
                 </div>
               )}
-              {data.desire_image && (
+              {data?.desire_image && (
                 <div className="mt-2">
                   <img
-                    src={`http://localhost:3000/${data.desire_image}`}
+                    src={data.desire_image}
                     alt="Preview"
                     className="w-40 h-40 object-cover rounded"
                   />
@@ -442,7 +442,7 @@ const OurLogo = ({ data, setData, onToggle }) => {
               {data.logo_img && (
                 <div className="mt-2">
                   <img
-                    src={`http://localhost:3000/${data.logo_img}`}
+                    src={data.logo_img}
                     alt="Preview"
                     className="w-40 h-40 object-cover rounded"
                   />
@@ -835,7 +835,7 @@ const OurPromoters = ({ data, setData, onToggle }) => {
                       <div className="flex items-start mb-3">
                         {promoter.profileImg && (
                           <img
-                            src={`http://localhost:3000/${promoter.profileImg}`}
+                            src={promoter.profileImg}
                             alt={promoter.name}
                             className="w-16 h-16 object-cover rounded-full mr-3"
                           />

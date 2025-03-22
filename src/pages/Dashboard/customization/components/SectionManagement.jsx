@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CiSquareChevDown } from "react-icons/ci";
 
 const SectionManagement = ({ 
   title, 
@@ -11,36 +12,18 @@ const SectionManagement = ({
 }) => {
   const [isOpen,setIsOpen]=useState(false);
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+    <div className={`p-6 shadow-md rounded-md ${isOpen ? "h-auto" : "h-[70px]"} overflow-hidden flex flex-col transition-transform duration-500 `}>
       <div className="flex justify-between items-center mb-4">
+        <button onClick={ () => setIsOpen(prev => !prev)} className={`flex items-center gap-2 text-[16px] font-semibold cursor-pointer ${!enabled ? "cursor-not-allowed opacity-40 " : ""}`} >
+        <h2 className="text-xl text-black font-bold">{title} Section</h2>
+                    <CiSquareChevDown className={`${isOpen ? "rotate-180" : "rotate-0"}`} />
+        </button>
         <div className="flex items-center space-x-3">
-          <h2 className="text-xl font-semibold">{title} Section</h2>
-          <button 
-            onClick={() => setIsOpen(prev => !prev)} 
-            className="ml-2 text-gray-500 hover:text-gray-700 focus:outline-none"
-          >
-            {isOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            )}
-          </button>
-        </div>
-        <div className="flex items-center space-x-3">
-          <label className="inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              className="sr-only peer"
-              checked={enabled}
-              onChange={() => onToggle(sectionKey, !enabled)}
-            />
-            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-            <span className="ms-3 text-sm font-medium text-gray-900">{enabled ? 'Enabled' : 'Disabled'}</span>
-          </label>
+           <div
+            className={`w-20 h-9 flex items-center rounded-[10px] p-3 cursor-pointer transition-all duration-500 ease-in-out text-white ${enabled ? "bg-yellow-500 justify-end" : "bg-gray-700 justify-start"}`}
+            onClick={() => onToggle(sectionKey, !enabled)}>
+            {enabled ? "ON" : "OFF"}
+          </div>
         </div>
       </div>
       
@@ -56,12 +39,16 @@ const SectionManagement = ({
             >
               Reset
             </button>
-            <button 
-              onClick={onSave}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Save Changes
-            </button>
+            {
+              sectionKey !== "store_feat_section" && (
+                <button 
+                 onClick={onSave}
+                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                 Save Changes
+                </button>
+              )
+            }
           </div>
         </>
       )}

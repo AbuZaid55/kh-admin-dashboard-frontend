@@ -11,18 +11,16 @@ import {
 } from './Section';
 
 
-export const BASE_URL="http://localhost:3000/khwaahish/customization/homepage/collectio-homepage";
+export const BASE_URL="http://localhost:3000/khwaahish/customization/homepage/collection-homepage";
 // export const BASE_URL= BASE_URL + /khwaahish/customization/homepage/collectio-homepage;     IN PRODUCTION
 
 const allowedCollectionHomepage = ["Aasai","Noor", "Bridal Edit", "Polki Edit","Pache"]
 
 const CollectionHomepageKHManager = ({ selectedCollection }) => {
   const [collectionData, setCollectionData] = useState(null);
-  
+
   useEffect(() => {
-    if (selectedCollection) {
       fetchCollectionData(selectedCollection);
-    }
   }, [selectedCollection]);
 
   const fetchCollectionData = async (collection_homepage_name) => {
@@ -56,48 +54,54 @@ const CollectionHomepageKHManager = ({ selectedCollection }) => {
       console.error(error);
     }
   };
-  console.log(collectionData);
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Manage Collection Homepages OF KHWAAHISH</h1>
-      {collectionData && (
-        (selectedCollection === "Noor" && (
+    <h1 className="text-2xl font-bold mb-4">Manage Collection Homepages OF KHWAAHISH</h1>
+    {collectionData && (
+      <>
+        {selectedCollection === "Noor" && (
           <>
             <GeneralSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <JewelAtGlanceSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
           </>
-        )) ||
-        (selectedCollection === "Aasai" && (
+        )}
+  
+        {selectedCollection === "Aasai" && (
           <>
             <GeneralSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <TopicsSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
           </>
-        ))||
-        (selectedCollection === "Bridal Edit" && (
+        )}
+  
+        {selectedCollection === "Bridal Edit" && (
           <>
             <GeneralSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <TopicsSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
           </>
-        ))||
-        (selectedCollection === "Polki Edit" && (
+        )}
+  
+        {selectedCollection === "Polki Edit" && (
           <>
             <GeneralSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <JewelAtGlanceSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <TopicsSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <CuratorThoughtSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
           </>
-        ))||
-        (selectedCollection === "Pache" && (
+        )}
+  
+        {selectedCollection === "Pache" && (
           <>
             <GeneralSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <CollectionSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <JewelAtGlanceSection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
             <CategorySection data={collectionData} setData={setCollectionData} onToggle={handleToggleSection} />
           </>
-        ))
-      )}
-    </div>
+        )}
+      </>
+    )}
+  </div>
+  
   );
 };
 

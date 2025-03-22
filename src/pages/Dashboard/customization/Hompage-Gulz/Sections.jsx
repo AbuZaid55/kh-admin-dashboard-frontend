@@ -122,7 +122,7 @@ export const GeneralSection = ({ data, setData, onToggle }) => {
           {data.logo && !logo && (
             <div className="mt-2">
               <span className="text-sm text-gray-500">Current: {data.logo.split('/').pop()}</span>
-              <img src={`http://localhost:3000/${data.logo}`} alt="Logo" className="mt-1 h-12 object-contain" />
+              <img src={data.logo} alt="Logo" className="mt-1 h-12 object-contain" />
             </div>
           )}
         </div>
@@ -852,6 +852,7 @@ export const PromiseSection = ({ data, setData, onToggle }) => {
         setFormData({
             promise_title: data.promise_title || '',
             promise_desc: data.promise_desc || '',
+            description:'',
         });
         setPromiseImage(null);
     };
@@ -862,11 +863,12 @@ export const PromiseSection = ({ data, setData, onToggle }) => {
             formDataObj.append('description', formData.description);
             if (promiseImage) formDataObj.append('image', promiseImage);
 
-           await axios.post(`${BASE_URL}/landing-page/promises`, formDataObj, {
+           const {data}=await axios.post(`${BASE_URL}/landing-page/promises`, formDataObj, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
-                setPromisesList([...promisesList, { description: formData.promise_desc, image: promiseImage.name }]);
-                toast.success('Promise added successfully');
+            setPromisesList([...promisesList, data.data]);
+            handleReset();
+            toast.success('Promise added successfully');
         } catch (err) {
             toast.error('Failed to add promise');
             console.error(err);
@@ -970,7 +972,7 @@ export const PromiseSection = ({ data, setData, onToggle }) => {
                                 <div>
                                     <p className="text-sm font-medium">{promise.description}</p>
                                     {promise.image && (
-                                        <img src={`http://localhost:3000/${promise.image}`} alt="Promise" className="mt-1 h-12 object-contain" />
+                                        <img src={promise.image} alt="Promise" className="mt-1 h-12 object-contain" />
                                     )}
                                 </div>
                                 <button 

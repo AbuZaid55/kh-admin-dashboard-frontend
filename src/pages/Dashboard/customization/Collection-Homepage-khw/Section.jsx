@@ -5,9 +5,6 @@ import SectionManagement from '../components/SectionManagement';
 import { BASE_URL } from './CollectionHomepageKHManager';
 
 
-
-
-
 const GeneralSection = ({ data, setData, onToggle }) => {
     const [formData, setFormData] = useState({
       hero_desc: data.hero_desc || '',
@@ -164,7 +161,7 @@ const GeneralSection = ({ data, setData, onToggle }) => {
             {data.hero_desktop_banner_img && !heroDesktopBannerImg && (
               <div className="mt-2">
                 <span className="text-sm text-gray-500">Current: {data.hero_desktop_banner_img.split('/').pop()}</span>
-                <img src={`http://localhost:3000/${data.hero_desktop_banner_img}`} alt="Hero Desktop Banner" className="mt-1 h-12 object-contain" />
+                <img src={data.hero_desktop_banner_img} alt="Hero Desktop Banner" className="mt-1 h-12 object-contain" />
               </div>
             )}
           </div>
@@ -187,7 +184,7 @@ const GeneralSection = ({ data, setData, onToggle }) => {
             {data.hero_mobile_banner_img && !heroMobileBannerImg && (
               <div className="mt-2">
                 <span className="text-sm text-gray-500">Current: {data.hero_mobile_banner_img.split('/').pop()}</span>
-                <img src={`http://localhost:3000/${data.hero_mobile_banner_img}`} alt="Hero Mobile Banner" className="mt-1 h-12 object-contain" />
+                <img src={data.hero_mobile_banner_img} alt="Hero Mobile Banner" className="mt-1 h-12 object-contain" />
               </div>
             )}
           </div>
@@ -210,7 +207,7 @@ const GeneralSection = ({ data, setData, onToggle }) => {
             {data.collection_logo && !collectionLogo && (
               <div className="mt-2">
                 <span className="text-sm text-gray-500">Current: {data.collection_logo.split('/').pop()}</span>
-                <img src={`http://localhost:3000/${data.collection_logo}`} alt="Collection Logo" className="mt-1 h-12 object-contain" />
+                <img src={data.collection_logo} alt="Collection Logo" className="mt-1 h-12 object-contain" />
               </div>
             )}
           </div>
@@ -237,7 +234,7 @@ const GeneralSection = ({ data, setData, onToggle }) => {
               <div className="mt-2">
                 <span className="text-sm text-gray-500">Current: {data.ad_video.split('/').pop()}</span>
                 <video controls className="mt-1 h-24 object-contain">
-                  <source src={`http://localhost:3000/${data.ad_video}`} type="video/mp4" />
+                  <source src={data.ad_video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -374,7 +371,7 @@ const CollectionSection = ({ data, setData, onToggle }) => {
             {data.collection_data_image && !collectionDataImage && (
               <div className="mt-2">
                 <span className="text-sm text-gray-500">Current: {data.collection_data_image.split('/').pop()}</span>
-                <img src={`http://localhost:3000/${data.collection_data_image}`} alt="Collection Data Image" className="mt-1 h-12 object-contain" />
+                <img src={data.collection_data_image} alt="Collection Data Image" className="mt-1 h-12 object-contain" />
               </div>
             )}
           </div>
@@ -489,7 +486,7 @@ const JewelAtGlanceSection = ({ data, setData, onToggle }) => {
           {data.jewel_at_glance_images && data.jewel_at_glance_images.length > 0 && (
             <div className="mt-2 flex gap-4">
               {data.jewel_at_glance_images.map((image, index) => (
-                <img key={index} src={`http://localhost:3000/${image}`} alt={`Jewel At Glance ${index}`} className="mt-1 h-12 object-contain" />
+                <img key={index} src={image} alt={`Jewel At Glance ${index}`} className="mt-1 h-12 object-contain" />
               ))}
             </div>
           )}
@@ -612,7 +609,7 @@ const CategorySection = ({ data, setData, onToggle }) => {
           {data.category_section_images && data.category_section_images.length > 0 && (
             <div className="my-2 gap-3 flex ">
               {data.category_section_images.map((image, index) => (
-                <img key={index} src={`http://localhost:3000/${image}`} alt={`Category Section ${index}`} className="mt-1 h-12 object-contain" />
+                <img key={index} src={image} alt={`Category Section ${index}`} className="mt-1 h-12 object-contain" />
               ))}
             </div>
           )}
@@ -666,7 +663,8 @@ const TopicsSection = ({ data, setData, onToggle }) => {
       newTopic.topicImages.forEach(file => {
         formDataObj.append('topicImages', file);
       });
-
+      console.log(`${BASE_URL}/topic`);
+      
       const response = await axios.post(`${BASE_URL}/topic`, formDataObj, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -824,7 +822,7 @@ const TopicsSection = ({ data, setData, onToggle }) => {
               {topic.topicImages && topic.topicImages.length > 0 && (
                 <div className="mt-2">
                   {topic.topicImages.map((image, index) => (
-                    <img key={index} src={`http://localhost:3000/${image}`} alt={`Topic ${index}`} className="mt-1 h-12 object-contain" />
+                    <img key={index} src={image} alt={`Topic ${index}`} className="mt-1 h-12 object-contain" />
                   ))}
                 </div>
               )}
@@ -959,7 +957,7 @@ const CuratorThoughtSection = ({ data, setData, onToggle }) => {
           {data.curator_profileImg && !curatorProfileImg && (
             <div className="mt-2">
               <span className="text-sm text-gray-500">Current: {data.curator_profileImg.split('/').pop()}</span>
-              <img src={`http://localhost:3000/${data.curator_profileImg}`} alt="Curator Profile" className="mt-1 h-12 object-contain" />
+              <img src={data.curator_profileImg} alt="Curator Profile" className="mt-1 h-12 object-contain" />
             </div>
           )}
         </div>

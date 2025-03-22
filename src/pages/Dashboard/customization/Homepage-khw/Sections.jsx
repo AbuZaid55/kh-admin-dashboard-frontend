@@ -7,13 +7,13 @@ import SectionManagement from '../components/SectionManagement';
 
 const GeneralSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    scroll_text: data.scroll_text || '',
-    eshop_web_link: data.eshop_web_link || '',
-    store_mapLink: data.store_mapLink || '',
-    hero_short_desc: data.hero_short_desc || '',
-    hero_desc: data.hero_desc || '',
+    scroll_text: data?.scroll_text || '',
+    eshop_web_link: data?.eshop_web_link || '',
+    store_mapLink: data?.store_mapLink || '',
+    hero_short_desc: data?.hero_short_desc || '',
+    hero_desc: data?.hero_desc || '',
   });
-  
+ 
 
   const [logoFile, setLogoFile] = useState(null);
   const [heroVideoFile, setHeroVideoFile] = useState(null);
@@ -63,11 +63,11 @@ const GeneralSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      scroll_text: data.scroll_text || '',
-      eshop_web_link: data.eshop_web_link || '',
-      store_mapLink: data.store_mapLink || '',
-      hero_short_desc: data.hero_short_desc || '',
-      hero_desc: data.hero_desc || '',
+      scroll_text: data?.scroll_text || '',
+      eshop_web_link: data?.eshop_web_link || '',
+      store_mapLink: data?.store_mapLink || '',
+      hero_short_desc: data?.hero_short_desc || '',
+      hero_desc: data?.hero_desc || '',
     });
     setLogoFile(null);
     setHeroVideoFile(null);
@@ -77,8 +77,8 @@ const GeneralSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="General"
       sectionKey="general_section"
-      enabled={data.general_section}
-      onToggle={() => onToggle("general_section", !data.general_section)}
+      enabled={data?.general_section}
+      onToggle={() => onToggle("general_section", !data?.general_section)}
       onSave={handleSave}
       onReset={handleReset}
     >
@@ -163,10 +163,10 @@ const GeneralSection = ({ data, setData, onToggle }) => {
               <img src={URL.createObjectURL(logoFile)} alt="Logo Preview" className="mt-1 h-12 object-contain" />
             </div>
           )}
-          {data.logo && !logoFile && (
+          {data?.logo && !logoFile && (
             <div className="mt-2">
-              <span className="text-sm text-gray-500">Current: {data.logo.split('/').pop()}</span>
-              <img src={`http://localhost:3000/${data.logo}`} alt="Logo" className="mt-1 h-12 object-contain" />
+              <span className="text-sm text-gray-500">Current: {data?.logo.split('/').pop()}</span>
+              <img src={data?.logo} alt="Logo" className="mt-1 h-12 object-contain" />
             </div>
           )}
         </div>
@@ -189,11 +189,11 @@ const GeneralSection = ({ data, setData, onToggle }) => {
               </video>
             </div>
           )}
-          {data.hero_video && !heroVideoFile && (
+          {data?.hero_video && !heroVideoFile && (
             <div className="mt-2">
-              <span className="text-sm text-gray-500">Current: {data.hero_video.split('/').pop()}</span>
+              <span className="text-sm text-gray-500">Current: {data?.hero_video.split('/').pop()}</span>
               <video controls className="mt-1 h-24 object-contain">
-                <source src={`http://localhost:3000/${data.hero_video}`} type="video/mp4" />
+                <source src={data?.hero_video} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -206,9 +206,9 @@ const GeneralSection = ({ data, setData, onToggle }) => {
 
 const HallmarkSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    hallmark_sec_desc: data.hallmark_sec_desc || '',
-    about_slug_name: data.about_slug_name || '',
-    about_slug: data.about_slug || '',
+    hallmark_sec_desc: data?.hallmark_sec_desc || '',
+    about_slug_name: data?.about_slug_name || '',
+    about_slug: data?.about_slug || '',
   });
 
   
@@ -256,9 +256,9 @@ const HallmarkSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      hallmark_sec_desc: data.hallmark_sec_desc || '',
-      about_slug_name: data.about_slug_name || '',
-      about_slug: data.about_slug || '',
+      hallmark_sec_desc: data?.hallmark_sec_desc || '',
+      about_slug_name: data?.about_slug_name || '',
+      about_slug: data?.about_slug || '',
     });
     setHallmarkImages([]);
   };
@@ -267,8 +267,8 @@ const HallmarkSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Hallmark"
       sectionKey="hallmark_section"
-      enabled={data.hallmark_section}
-      onToggle={() => onToggle("hallmark_section", !data.hallmark_section)}
+      enabled={data?.hallmark_section}
+      onToggle={() => onToggle("hallmark_section", !data?.hallmark_section)}
       onSave={handleSave}
       onReset={handleReset}
     >
@@ -324,11 +324,11 @@ const HallmarkSection = ({ data, setData, onToggle }) => {
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
          
-          {data.hallmark_images && data.hallmark_images.length > 0 && (
+          {data?.hallmark_images && data?.hallmark_images?.length > 0 && (
               <div className="mt-2 grid grid-cols-3 gap-2">
-                {data.hallmark_images.map((image, index) => (
+                {data?.hallmark_images.map((image, index) => (
                   <div key={index} className="relative">
-                    <img src={`http://localhost:3000/${image}`} alt={`Hallmark ${index}`} className="h-24 w-full object-cover rounded" />
+                    <img src={image} alt={`Hallmark ${index}`} className="h-24 w-full object-cover rounded" />
                   </div>
                 ))}
               </div>
@@ -341,11 +341,11 @@ const HallmarkSection = ({ data, setData, onToggle }) => {
 
 const HighJewelSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    high_jewel_title: data.high_jewel_title || '',
-    high_jewel_desc: data.high_jewel_desc || '',
+    high_jewel_title: data?.high_jewel_title || '',
+    high_jewel_desc: data?.high_jewel_desc || '',
   });
 
-  const [carousalItems, setCarousalItems] = useState(data.high_jewel_list || []);
+  const [carousalItems, setCarousalItems] = useState(data?.high_jewel_list || []);
   const [newItem, setNewItem] = useState({
     high_title: '',
     high_short_desc: '',
@@ -434,15 +434,14 @@ const HighJewelSection = ({ data, setData, onToggle }) => {
       console.error(err);
     }
   };
-  console.log(data.high_jewel_list);
   
 
   const handleReset = () => {
     setFormData({
-      high_jewel_title: data.high_jewel_title || '',
-      high_jewel_desc: data.high_jewel_desc || '',
+      high_jewel_title: data?.high_jewel_title || '',
+      high_jewel_desc: data?.high_jewel_desc || '',
     });
-    setCarousalItems(data.high_jewel_list || []);
+    setCarousalItems(data?.high_jewel_list || []);
     setNewItem({
       high_title: '',
       high_short_desc: '',
@@ -456,8 +455,8 @@ const HighJewelSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="High Jewellery Collection"
       sectionKey="high_jewel_collection_section"
-      enabled={data.high_jewel_collection_section}
-      onToggle={() => onToggle("high_jewel_collection_section", !data.high_jewel_collection_section)}
+      enabled={data?.high_jewel_collection_section}
+      onToggle={() => onToggle("high_jewel_collection_section", !data?.high_jewel_collection_section)}
       onSave={handleSaveSection}
       onReset={handleReset}
     >
@@ -508,11 +507,11 @@ const HighJewelSection = ({ data, setData, onToggle }) => {
                       Delete
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">{item.high_short_desc}</p>
-                  <p className="text-sm text-gray-600 mt-1">Slug Name: {item.high_slug_name}</p>
-                  <p className="text-sm text-gray-600 mt-1">Slug: {item.high_slug}</p>
-                  {item.high_Image && (
-                    <img src={`http://localhost:3000/${item.high_Image}`} alt={item.high_title} className="mt-2 h-20 object-cover" />
+                  <p className="text-sm text-gray-600 mt-1">{item?.high_short_desc}</p>
+                  <p className="text-sm text-gray-600 mt-1">Slug Name: {item?.high_slug_name}</p>
+                  <p className="text-sm text-gray-600 mt-1">Slug: {item?.high_slug}</p>
+                  {item?.high_Image && (
+                    <img src={item?.high_Image} alt={item?.high_title} className="mt-2 h-20 object-cover" />
                   )}
                 </div>
               ))}
@@ -603,11 +602,11 @@ const HighJewelSection = ({ data, setData, onToggle }) => {
 
 const QOHSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    qoh_section_title: data.qoh_section_title || '',
-    qoh_section_short_desc: data.qoh_section_short_desc || '',
+    qoh_section_title: data?.qoh_section_title || '',
+    qoh_section_short_desc: data?.qoh_section_short_desc || '',
   });
 
-  const [carousalItems, setCarousalItems] = useState(data.qoh_section_list || []);
+  const [carousalItems, setCarousalItems] = useState(data?.qoh_section_list || []);
   const [newItem, setNewItem] = useState({
     qohTitle: '',
     qohShort_desc: '',
@@ -699,10 +698,10 @@ const QOHSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      qoh_section_title: data.qoh_section_title || '',
-      qoh_section_short_desc: data.qoh_section_short_desc || '',
+      qoh_section_title: data?.qoh_section_title || '',
+      qoh_section_short_desc: data?.qoh_section_short_desc || '',
     });
-    setCarousalItems(data.qoh_section_list || []);
+    setCarousalItems(data?.qoh_section_list || []);
     setNewItem({
       qohTitle: '',
       qohShort_desc: '',
@@ -716,7 +715,7 @@ const QOHSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Queen Of Heart"
       sectionKey="qoh_section"
-      enabled={data.qoh_section}
+      enabled={data?.qoh_section}
       onToggle={onToggle}
       onSave={handleSaveSection}
       onReset={handleReset}
@@ -768,11 +767,11 @@ const QOHSection = ({ data, setData, onToggle }) => {
                       Delete
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">{item.qohShort_desc}</p>
-                  <p className="text-sm text-gray-600 mt-1">Slug Name: {item.qoh_slug_name}</p>
-                  <p className="text-sm text-gray-600 mt-1">Slug: {item.qoh_slug}</p>
-                  {item.qohImage && (
-                    <img src={`http://localhost:3000/${item.qohImage}`} alt={item.high_title} className="mt-2 h-20 object-cover" />
+                  <p className="text-sm text-gray-600 mt-1">{item?.qohShort_desc}</p>
+                  <p className="text-sm text-gray-600 mt-1">Slug Name: {item?.qoh_slug_name}</p>
+                  <p className="text-sm text-gray-600 mt-1">Slug: {item?.qoh_slug}</p>
+                  {item?.qohImage && (
+                    <img src={item?.qohImage} alt={item?.high_title} className="mt-2 h-20 object-cover" />
                   )}
                 </div>
               ))}
@@ -863,12 +862,12 @@ const QOHSection = ({ data, setData, onToggle }) => {
 
 const BridalEditSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    bridal_edit_section_title: data.bridal_edit_section_title || '',
-    bridal_edit_section_short_desc: data.bridal_edit_section_short_desc || '',
-    bridal_edit_title: data.bridal_edit_title || '',
-    bridal_edit_short_desc: data.bridal_edit_short_desc || '',
-    bridal_edit_slug_name: data.bridal_edit_slug_name || '',
-    bridal_edit_slug: data.bridal_edit_slug || '',
+    bridal_edit_section_title: data?.bridal_edit_section_title || '',
+    bridal_edit_section_short_desc: data?.bridal_edit_section_short_desc || '',
+    bridal_edit_title: data?.bridal_edit_title || '',
+    bridal_edit_short_desc: data?.bridal_edit_short_desc || '',
+    bridal_edit_slug_name: data?.bridal_edit_slug_name || '',
+    bridal_edit_slug: data?.bridal_edit_slug || '',
   });
 
   const [bridalEditImage, setBridalEditImage] = useState(null);
@@ -912,12 +911,12 @@ const BridalEditSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      bridal_edit_section_title: data.bridal_edit_section_title || '',
-      bridal_edit_section_short_desc: data.bridal_edit_section_short_desc || '',
-      bridal_edit_title: data.bridal_edit_title || '',
-      bridal_edit_short_desc: data.bridal_edit_short_desc || '',
-      bridal_edit_slug_name: data.bridal_edit_slug_name || '',
-      bridal_edit_slug: data.bridal_edit_slug || '',
+      bridal_edit_section_title: data?.bridal_edit_section_title || '',
+      bridal_edit_section_short_desc: data?.bridal_edit_section_short_desc || '',
+      bridal_edit_title: data?.bridal_edit_title || '',
+      bridal_edit_short_desc: data?.bridal_edit_short_desc || '',
+      bridal_edit_slug_name: data?.bridal_edit_slug_name || '',
+      bridal_edit_slug: data?.bridal_edit_slug || '',
     });
     setBridalEditImage(null);
   };
@@ -926,8 +925,8 @@ const BridalEditSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Bridal Edit"
       sectionKey="bridal_edit_section"
-      enabled={data.bridal_edit_section}
-      onToggle={() => onToggle('bridal_edit_section', !data.bridal_edit_section)}
+      enabled={data?.bridal_edit_section}
+      onToggle={() => onToggle('bridal_edit_section', !data?.bridal_edit_section)}
       onSave={handleSave}
       onReset={handleReset}
     >
@@ -1020,8 +1019,8 @@ const BridalEditSection = ({ data, setData, onToggle }) => {
             onChange={handleFileChange}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {data.bridal_edit_image && (
-            <img src={`http://localhost:3000/${data.bridal_edit_image}`} alt={data.bridal_edit_title} className="mt-2 h-20 object-cover" />
+          {data?.bridal_edit_image && (
+            <img src={data?.bridal_edit_image} alt={data?.bridal_edit_title} className="mt-2 h-20 object-cover" />
            )}
         </div>
       </div>
@@ -1031,12 +1030,12 @@ const BridalEditSection = ({ data, setData, onToggle }) => {
 
 const PolkiEditSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    polki_edit_section_title: data.polki_edit_section_title || '',
-    polki_edit_section_short_desc: data.polki_edit_section_short_desc || '',
-    polki_edit_title: data.polki_edit_title || '',
-    polki_edit_short_desc: data.polki_edit_short_desc || '',
-    polki_edit_slug_name: data.polki_edit_slug_name || '',
-    polki_edit_slug: data.polki_edit_slug || '',
+    polki_edit_section_title: data?.polki_edit_section_title || '',
+    polki_edit_section_short_desc: data?.polki_edit_section_short_desc || '',
+    polki_edit_title: data?.polki_edit_title || '',
+    polki_edit_short_desc: data?.polki_edit_short_desc || '',
+    polki_edit_slug_name: data?.polki_edit_slug_name || '',
+    polki_edit_slug: data?.polki_edit_slug || '',
   });
 
   const [polkiEditImage, setPolkiEditImage] = useState(null);
@@ -1080,12 +1079,12 @@ const PolkiEditSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      polki_edit_section_title: data.polki_edit_section_title || '',
-      polki_edit_section_short_desc: data.polki_edit_section_short_desc || '',
-      polki_edit_title: data.polki_edit_title || '',
-      polki_edit_short_desc: data.polki_edit_short_desc || '',
-      polki_edit_slug_name: data.polki_edit_slug_name || '',
-      polki_edit_slug: data.polki_edit_slug || '',
+      polki_edit_section_title: data?.polki_edit_section_title || '',
+      polki_edit_section_short_desc: data?.polki_edit_section_short_desc || '',
+      polki_edit_title: data?.polki_edit_title || '',
+      polki_edit_short_desc: data?.polki_edit_short_desc || '',
+      polki_edit_slug_name: data?.polki_edit_slug_name || '',
+      polki_edit_slug: data?.polki_edit_slug || '',
     });
     setPolkiEditImage(null);
   };
@@ -1094,8 +1093,8 @@ const PolkiEditSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Polki Edit"
       sectionKey="polki_edit_section"
-      enabled={data.polki_edit_section}
-      onToggle={() => onToggle('polki_edit_section', !data.polki_edit_section)}
+      enabled={data?.polki_edit_section}
+      onToggle={() => onToggle('polki_edit_section', !data?.polki_edit_section)}
       onSave={handleSave}
       onReset={handleReset}
     >
@@ -1188,8 +1187,8 @@ const PolkiEditSection = ({ data, setData, onToggle }) => {
             onChange={handleFileChange}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {data.polki_edit_image && (
-             <img src={`http://localhost:3000/${data.polki_edit_image}`} alt={data.bridal_edit_title} className="mt-2 h-20 object-cover" />
+          {data?.polki_edit_image && (
+             <img src={data?.polki_edit_image} alt={data?.bridal_edit_title} className="mt-2 h-20 object-cover" />
            )}
         </div>
       </div>
@@ -1199,11 +1198,11 @@ const PolkiEditSection = ({ data, setData, onToggle }) => {
   
 const PromiseSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    promise_sec_title: data.promise_sec_title || '',
-    promise_short_desc: data.promise_short_desc || '',
+    promise_sec_title: data?.promise_sec_title || '',
+    promise_short_desc: data?.promise_short_desc || '',
   });
 
-  const [promiseItems, setPromiseItems] = useState(data.promise_list || []);
+  const [promiseItems, setPromiseItems] = useState(data?.promise_list || []);
   const [newItem, setNewItem] = useState({
     promise_title: '',
   });
@@ -1289,10 +1288,10 @@ const PromiseSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      promise_sec_title: data.promise_sec_title || '',
-      promise_short_desc: data.promise_short_desc || '',
+      promise_sec_title: data?.promise_sec_title || '',
+      promise_short_desc: data?.promise_short_desc || '',
     });
-    setPromiseItems(data.promise_list || []);
+    setPromiseItems(data?.promise_list || []);
     setNewItem({
       promise_title: '',
     });
@@ -1303,7 +1302,7 @@ const PromiseSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Promise"
       sectionKey="promise_section"
-      enabled={data.promise_section}
+      enabled={data?.promise_section}
       onToggle={onToggle}
       onSave={handleSaveSection}
       onReset={handleReset}
@@ -1355,8 +1354,8 @@ const PromiseSection = ({ data, setData, onToggle }) => {
                       Delete
                     </button>
                   </div>
-                  {item.promise_image && (
-                    <img src={`http://localhost:3000/${item.promise_image}`} alt={item.promise_title} className="mt-2 h-20 object-cover" />
+                  {item?.promise_image && (
+                    <img src={item?.promise_image} alt={item?.promise_title} className="mt-2 h-20 object-cover" />
                   )}
                 </div>
               ))}
@@ -1408,8 +1407,8 @@ const PromiseSection = ({ data, setData, onToggle }) => {
 
 const ComingSoonSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    coming_soon_section_title: data.coming_soon_section_title || '',
-    videoCall_slug: data.videoCall_slug || '',
+    coming_soon_section_title: data?.coming_soon_section_title || '',
+    videoCall_slug: data?.videoCall_slug || '',
   });
 
   const [comingSoonImages, setComingSoonImages] = useState([]);
@@ -1465,8 +1464,8 @@ const ComingSoonSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      coming_soon_section_title: data.coming_soon_section_title || '',
-      videoCall_slug: data.videoCall_slug || '',
+      coming_soon_section_title: data?.coming_soon_section_title || '',
+      videoCall_slug: data?.videoCall_slug || '',
     });
     setComingSoonImages([]);
     setVideoCallBannerImage(null);
@@ -1476,8 +1475,8 @@ const ComingSoonSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Coming Soon"
       sectionKey="coming_soon_section"
-      enabled={data.coming_soon_section}
-      onToggle={()=>onToggle("coming_soon_section",!data.coming_soon_section)}
+      enabled={data?.coming_soon_section}
+      onToggle={()=>onToggle("coming_soon_section",!data?.coming_soon_section)}
       onSave={handleSave}
       onReset={handleReset}
     >
@@ -1519,11 +1518,11 @@ const ComingSoonSection = ({ data, setData, onToggle }) => {
             onChange={handleFileChange}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {data.coming_soon_images && data.coming_soon_images.length > 0 && (
+          {data?.coming_soon_images && data?.coming_soon_images.length > 0 && (
               <div className="mt-2 grid grid-cols-3 gap-2">
-                {data.coming_soon_images.map((image, index) => (
+                {data?.coming_soon_images.map((image, index) => (
                   <div key={index} className="relative">
-                    <img src={`http://localhost:3000/${image}`} alt={`Hallmark ${index}`} className="h-24 w-full object-cover rounded" />
+                    <img src={image} alt={`Hallmark ${index}`} className="h-24 w-full object-cover rounded" />
                   </div>
                 ))}
               </div>
@@ -1540,8 +1539,8 @@ const ComingSoonSection = ({ data, setData, onToggle }) => {
             onChange={handleFileChange}
             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-         {data.coming_soon_videCall_banner_image && (
-                    <img src={`http://localhost:3000/${data.coming_soon_videCall_banner_image}`} alt={"Video Call Banner"} className="mt-2 h-20 object-cover" />
+         {data?.coming_soon_videCall_banner_image && (
+                    <img src={data?.coming_soon_videCall_banner_image} alt={"Video Call Banner"} className="mt-2 h-20 object-cover" />
            )}
         </div>
       </div>
@@ -1551,10 +1550,10 @@ const ComingSoonSection = ({ data, setData, onToggle }) => {
 
 const StoreSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    store_section_title: data.store_section_title || '',
-    storeShort_desc: data.storeShort_desc || '',
-    storeDesc: data.storeDesc || '',
-    mapiframeLink: data.mapiframeLink || '',
+    store_section_title: data?.store_section_title || '',
+    storeShort_desc: data?.storeShort_desc || '',
+    storeDesc: data?.storeDesc || '',
+    mapiframeLink: data?.mapiframeLink || '',
   });
 
   const [storeImage, setStoreImage] = useState(null);
@@ -1598,10 +1597,10 @@ const StoreSection = ({ data, setData, onToggle }) => {
 
   const handleReset = () => {
     setFormData({
-      store_section_title: data.store_section_title || '',
-      storeShort_desc: data.storeShort_desc || '',
-      storeDesc: data.storeDesc || '',
-      mapiframeLink: data.mapiframeLink || '',
+      store_section_title: data?.store_section_title || '',
+      storeShort_desc: data?.storeShort_desc || '',
+      storeDesc: data?.storeDesc || '',
+      mapiframeLink: data?.mapiframeLink || '',
     });
     setStoreImage(null);
   };
@@ -1610,8 +1609,8 @@ return (
     <SectionManagement
         title="Store"
         sectionKey="store_section"
-        enabled={data.store_section}
-        onToggle={() => onToggle("store_section", !data.store_section)}
+        enabled={data?.store_section}
+        onToggle={() => onToggle("store_section", !data?.store_section)}
         onSave={handleSave}
         onReset={handleReset}
     >
@@ -1690,8 +1689,8 @@ return (
                     onChange={handleFileChange}
                     className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {data.storeImage && (
-                    <img src={`http://localhost:3000/${data.storeImage}`} alt={"Store Image"} className="mt-2 h-20 object-cover" />
+                {data?.storeImage && (
+                    <img src={data?.storeImage} alt={"Store Image"} className="mt-2 h-20 object-cover" />
                 )}
             </div>
         </div>
@@ -1752,8 +1751,8 @@ const StoreFeatureSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="Store Features"
       sectionKey="store_feat_section"
-      enabled={data.store_feat_section}
-      onToggle={() => onToggle("store_feat_section", !data.store_feat_section)}
+      enabled={data?.store_feat_section}
+      onToggle={() => onToggle("store_feat_section", !data?.store_feat_section)}
       onSave={() => {}}
       onReset={() => {}}
     >
@@ -1798,12 +1797,12 @@ const StoreFeatureSection = ({ data, setData, onToggle }) => {
         <div className="space-y-4">
           <h3 className="text-lg font-medium">Existing Features</h3>
 
-          {data.store_feat_list.length > 0 && (
+          {data?.store_feat_list?.length > 0 && (
             <div className="space-y-4">
-              {data.store_feat_list.map((item, index) => (
+              {data?.store_feat_list?.map((item, index) => (
                 <div key={item._id || index} className="p-4 border border-gray-200 rounded">
                   <div className="flex justify-between">
-                    <h4 className="font-medium">{item.featTitle}</h4>
+                    <h4 className="font-medium">{item?.featTitle}</h4>
                     <button
                       onClick={() => handleDeleteFeature(item._id)}
                       className="text-red-500 hover:text-red-700"
@@ -1811,7 +1810,7 @@ const StoreFeatureSection = ({ data, setData, onToggle }) => {
                       Delete
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">{item.featDesc}</p>
+                  <p className="text-sm text-gray-600 mt-1">{item?.featDesc}</p>
                 </div>
               ))}
             </div>
@@ -1824,10 +1823,10 @@ const StoreFeatureSection = ({ data, setData, onToggle }) => {
 
 const FAQSection = ({ data, setData, onToggle }) => {
   const [formData, setFormData] = useState({
-    faq_title: data.faq_title || '',
+    faq_title: data?.faq_title || '',
   });
 
-  const [faqItems, setFaqItems] = useState(data.faq_list || []);
+  const [faqItems, setFaqItems] = useState(data?.faq_list || []);
   const [newItem, setNewItem] = useState({
     question: '',
     answer: '',
@@ -1908,8 +1907,8 @@ const FAQSection = ({ data, setData, onToggle }) => {
     <SectionManagement
       title="FAQ"
       sectionKey="faq_section"
-      enabled={data.faq_section}
-      onToggle={()=>onToggle("faq_section",!data.faq_section)}
+      enabled={data?.faq_section}
+      onToggle={()=>onToggle("faq_section",!data?.faq_section)}
       onSave={handleSaveSection}
       onReset={handleReset}
     >
@@ -1939,7 +1938,7 @@ const FAQSection = ({ data, setData, onToggle }) => {
               {faqItems.map((item, index) => (
                 <div key={item._id || index} className="p-4 border border-gray-200 rounded">
                   <div className="flex justify-between">
-                    <h4 className="font-medium">{item.question}</h4>
+                    <h4 className="font-medium">{item?.question}</h4>
                     <button
                       onClick={() => handleDeleteItem(item._id)}
                       className="text-red-500 hover:text-red-700"
@@ -1947,7 +1946,7 @@ const FAQSection = ({ data, setData, onToggle }) => {
                       Delete
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">{item.answer}</p>
+                  <p className="text-sm text-gray-600 mt-1">{item?.answer}</p>
                 </div>
               ))}
             </div>

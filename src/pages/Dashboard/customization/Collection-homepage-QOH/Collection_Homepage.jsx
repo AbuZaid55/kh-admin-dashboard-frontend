@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Trash2, ChevronUp, ChevronDown } from "lucide-react";
 import axios from "axios";
+import { CiSquareChevDown } from "react-icons/ci";
 
 const API_BASE_URL =
-  "http://localhost:4000/api/v1/collection-homepage/customization";
+  "http://localhost:3000/api/v1/collection-homepage/customization";
 
 function CollapsibleSection({
   title,
@@ -21,41 +22,19 @@ function CollapsibleSection({
   return (
     <div className="border p-4 mb-4 rounded bg-white">
       {/* Header row with Title, optional Enabled toggle, and Expand/Collapse button */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+      <div className="flex justify-between items-center mb-4">
+          <button onClick={toggleExpand} className={`flex items-center gap-2 text-[16px] font-semibold cursor-pointer ${hasEnableToggle && !(!!formData[enabledKey]) ? "cursor-not-allowed opacity-40 " : ""}`} >
           <h2 className="text-xl font-semibold">{title}</h2>
+            <CiSquareChevDown className={`${isExpanded ? "rotate-180" : "rotate-0"}`} />
+           </button>
           {hasEnableToggle && (
-            // <label className="flex items-center space-x-2">
-            //   <input
-            //     type="checkbox"
-            //     name={enabledKey}
-            //     checked={!!formData[enabledKey]}
-            //     onChange={handleInputChange}
-            //   />
-            //   <span className="text-sm">
-            //     {formData[enabledKey] ? "Enabled" : "Disabled"}
-            //   </span>
-            // </label>
-             <label className="inline-flex items-center cursor-pointer">
-             <input
-               type={enabledKey}
-               className="sr-only peer"
-               checked={!!formData[enabledKey]}
-               onChange={handleInputChange}
-             />
-             <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-             <span className="ms-3 text-sm font-medium text-gray-900"> {formData[enabledKey] ? "Enabled" : "Disabled"}</span>
-           </label>
+           <div
+              className={`w-20 h-9 flex items-center rounded-[10px] p-3 cursor-pointer transition-all duration-500 ease-in-out text-white ${!(!!formData[enabledKey]) ? "bg-gray-700 justify-start": "bg-yellow-500 justify-end" }`}
+              onClick={()=>handleInputChange({target:{ name:enabledKey, value:!(!!formData[enabledKey]), type:"checkbox", checked:!(!!formData[enabledKey]) }})}>
+              {!(!!formData[enabledKey]) ? "OFF" : "ON"}
+             </div>
           )}
-        </div>
-        <button
-          type="button"
-          onClick={toggleExpand}
-          className="text-blue-600 cursor-pointer focus:outline-none active:scale-95 transition transform duration-75 ease-in-out"
-        >
-          {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-        </button>
-      </div>
+      </div> 
 
       {/* Section content only visible if expanded */}
       {isExpanded && <div className="mt-4">{children}</div>}
@@ -185,8 +164,10 @@ export default function CollectionHomepageAdmin({selectedCollection}) {
     }
   }, [selectedCollection]);
 
+  console.log(formData)
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+    
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,

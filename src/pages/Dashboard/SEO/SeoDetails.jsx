@@ -6,8 +6,6 @@ import axios from 'axios';
 const API_URL="http://localhost:3000";
 
 function SeoDetails() {
-
-
     const [seoEntries, setSeoEntries] = useState([]);
 
     const [loading, setLoading] = useState(true);
@@ -25,8 +23,6 @@ function SeoDetails() {
         meta_property_og: [{ property: '', content: '' }],
         meta_name_twitter: [{ name: '', content: '' }]
     });
-
-    // console.log(seoEntries[0]);
 
 
     const [searchTerm, setSearchTerm] = useState('');
